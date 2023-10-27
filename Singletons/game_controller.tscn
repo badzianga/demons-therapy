@@ -6,6 +6,5 @@
 script = ExtResource("1_vjir3")
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_level_timer_timeout"]

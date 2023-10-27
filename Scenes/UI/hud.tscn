@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceegmqeonmn7f"]
+
+[ext_resource type="Script" path="res://Scenes/UI/hud.gd" id="1_ygdsp"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ygdsp")
+
+[node name="TimeLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 63.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "00:00"
