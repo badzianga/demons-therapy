@@ -1,7 +1,7 @@
 extends Node
 
 const LEVEL_HOURS: Array[int] =   [0, 5]
-const LEVEL_MINUTES: Array[int] = [0, 45]
+const LEVEL_MINUTES: Array[int] = [0, 0]
 
 var level := 1
 var hour := 0
@@ -21,6 +21,11 @@ func start_level() -> void:
 	timer.start()
 	set_ambient_light()
 	hud.set_time(hour, minute)
+
+
+# intermediary function from player to hud
+func set_stamina(stamina: int) -> void:
+	hud.set_stamina(stamina)
 
 
 func _on_level_timer_timeout() -> void:

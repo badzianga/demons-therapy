@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
 
-@export var speed = 300.0
+@export var speed := 300.0
+@export var sprint_factor := 1.75
 
 var direction := Vector2.ZERO
+var stamina := 100
+var stamina_depleted := false
 
 @onready var sprite := $Sprite
 @onready var animation_player := $AnimationPlayer
@@ -12,6 +15,7 @@ var direction := Vector2.ZERO
 func _physics_process(_delta: float) -> void:
 	handle_movement()
 	handle_animations()
+	GameController.set_stamina(stamina)
 
 
 func handle_movement() -> void:
@@ -19,10 +23,20 @@ func handle_movement() -> void:
 	direction.y = Input.get_axis("up", "down")
 	
 	if direction:
-		velocity = direction.normalized() * speed
+		if Input.is_action_pressed("sprint") and not stamina_depleted:
+			velocity = direction.normalized() * speed * sprint_factor
+			stamina -= 2
+			if stamina < 0:
+				stamina_depleted = true
+		else:
+			velocity = direction.normalized() * speed
 	else:
 		velocity = Vector2.ZERO
 	
+	stamina = min(stamina + 1, 100)
+	if stamina_depleted and stamina == 100:
+		stamina_depleted = false
+
 	move_and_slide()
 
 

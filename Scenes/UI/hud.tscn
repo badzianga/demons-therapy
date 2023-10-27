@@ -16,3 +16,20 @@ offset_bottom = 63.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 32
 text = "00:00"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 169.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 32
+text = "Stamina"
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 193.0
+offset_bottom = 107.0
+step = 1.0
+value = 100.0
+show_percentage = false
