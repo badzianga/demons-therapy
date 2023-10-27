@@ -1,6 +1,6 @@
 extends Node
 
-const LEVEL_HOURS: Array[int] =   [0, 5]
+const LEVEL_HOURS: Array[int] =   [0, 1]
 const LEVEL_MINUTES: Array[int] = [0, 0]
 
 var level := 1

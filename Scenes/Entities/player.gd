@@ -10,6 +10,7 @@ var stamina_depleted := false
 
 @onready var sprite := $Sprite
 @onready var animation_player := $AnimationPlayer
+@onready var walk_sound := $WalkSound
 
 
 func _physics_process(_delta: float) -> void:
@@ -30,6 +31,10 @@ func handle_movement() -> void:
 				stamina_depleted = true
 		else:
 			velocity = direction.normalized() * speed
+		
+		if not walk_sound.playing:
+			walk_sound.pitch_scale = randf_range(0.85, 1.15)
+			walk_sound.play()
 	else:
 		velocity = Vector2.ZERO
 	
