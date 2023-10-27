@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0exx5ftanscx"]
+[gd_scene load_steps=3 format=3 uid="uid://b0exx5ftanscx"]
 
 [ext_resource type="PackedScene" uid="uid://dm4j6xag753iw" path="res://Scenes/Environment/tree1.tscn" id="1_t86hg"]
 
+[sub_resource type="TileSet" id="TileSet_3xaxd"]
+tile_shape = 1
+tile_size = Vector2i(256, 128)
+
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_3xaxd")
+format = 2
 
 [node name="Tree1" parent="." instance=ExtResource("1_t86hg")]
 position = Vector2(141, 325)
