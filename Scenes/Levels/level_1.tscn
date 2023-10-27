@@ -1,13 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0exx5ftanscx"]
+[gd_scene load_steps=2 format=3 uid="uid://b0exx5ftanscx"]
 
-[ext_resource type="PackedScene" uid="uid://cvg0sjg6fcdar" path="res://Scenes/Entities/player.tscn" id="1_mgtyt"]
-[ext_resource type="PackedScene" uid="uid://dw68x47bbd258" path="res://Scenes/Camera/player_camera.tscn" id="2_wkggp"]
+[ext_resource type="PackedScene" uid="uid://dm4j6xag753iw" path="res://Scenes/Environment/tree1.tscn" id="1_t86hg"]
 
 [node name="Level1" type="Node2D"]
-scale = Vector2(1, 1.00851)
+y_sort_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_mgtyt")]
+[node name="Tree1" parent="." instance=ExtResource("1_t86hg")]
+position = Vector2(141, 325)
 
-[node name="PlayerCamera" parent="Player" instance=ExtResource("2_wkggp")]
+[node name="Tree2" parent="." instance=ExtResource("1_t86hg")]
+position = Vector2(252, 296)
 
-[editable path="Player/PlayerCamera"]
+[node name="Tree3" parent="." instance=ExtResource("1_t86hg")]
+position = Vector2(312, 370)
+
+[node name="Tree4" parent="." instance=ExtResource("1_t86hg")]
+position = Vector2(785, 214)
+
+[node name="Tree5" parent="." instance=ExtResource("1_t86hg")]
+position = Vector2(885, 331)
+
+[node name="Tree6" parent="." instance=ExtResource("1_t86hg")]
+position = Vector2(845, 443)

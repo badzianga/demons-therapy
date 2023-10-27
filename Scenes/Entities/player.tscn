@@ -1,10 +1,39 @@
-[gd_scene format=3 uid="uid://cvg0sjg6fcdar"]
+[gd_scene load_steps=6 format=3 uid="uid://cvg0sjg6fcdar"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_j3w4g"]
+[ext_resource type="Texture2D" uid="uid://bnrldjjwa7mvu" path="res://Assets/Entities/player.png" id="2_jq45s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djfv7"]
+radius = 20.0
+height = 100.0
+
+[sub_resource type="Gradient" id="Gradient_ao0fr"]
+offsets = PackedFloat32Array(0, 0.741935)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0yfcx"]
+gradient = SubResource("Gradient_ao0fr")
+width = 512
+height = 384
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 5
 motion_mode = 1
+script = ExtResource("1_j3w4g")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-1, -46)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_jq45s")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_djfv7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_0yfcx")

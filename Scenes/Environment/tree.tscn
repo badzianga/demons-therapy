@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dm4j6xag753iw"]
-
-[node name="Tree" type="StaticBody2D"]
-
-[node name="Sprite" type="Sprite2D" parent="."]
-
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
