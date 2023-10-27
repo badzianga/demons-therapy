@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwaqtq7ukit0d"]
+
+[ext_resource type="Texture2D" uid="uid://cdlyh6tnx2l7f" path="res://Assets/Environment/log_pile.png" id="1_meeum"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cix15"]
+radius = 33.0
+height = 206.0
+
+[node name="LogPile" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2, -23)
+texture = ExtResource("1_meeum")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cix15")

@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0exx5ftanscx"]
+[gd_scene load_steps=10 format=3 uid="uid://b0exx5ftanscx"]
 
 [ext_resource type="Texture2D" uid="uid://cbkia1ok3hpvp" path="res://Assets/Environment/bg_grass.png" id="1_ig5y3"]
 [ext_resource type="PackedScene" uid="uid://dm4j6xag753iw" path="res://Scenes/Environment/tree1.tscn" id="1_t86hg"]
+[ext_resource type="PackedScene" uid="uid://c1esubmkxcpwp" path="res://Scenes/Environment/bush.tscn" id="3_1ynuo"]
+[ext_resource type="PackedScene" uid="uid://bwaqtq7ukit0d" path="res://Scenes/Environment/log_pile.tscn" id="4_w4ly4"]
+[ext_resource type="PackedScene" uid="uid://btlf7b28ivhs5" path="res://Scenes/Environment/small_stone.tscn" id="5_xpqwd"]
+[ext_resource type="PackedScene" uid="uid://oer4uvjwo2vj" path="res://Scenes/Environment/tree2.tscn" id="6_qnny2"]
+[ext_resource type="PackedScene" uid="uid://n32lrg0otnyx" path="res://Scenes/Environment/small_grass.tscn" id="7_wf07q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63664"]
 texture = ExtResource("1_ig5y3")
@@ -39,3 +44,45 @@ position = Vector2(885, 331)
 
 [node name="Tree6" parent="." instance=ExtResource("1_t86hg")]
 position = Vector2(845, 443)
+
+[node name="Bush" parent="." instance=ExtResource("3_1ynuo")]
+position = Vector2(600, 618)
+
+[node name="Bush2" parent="." instance=ExtResource("3_1ynuo")]
+position = Vector2(487, 585)
+
+[node name="LogPile" parent="." instance=ExtResource("4_w4ly4")]
+position = Vector2(102, 541)
+
+[node name="SmallStone" parent="." instance=ExtResource("5_xpqwd")]
+position = Vector2(1142, 538)
+
+[node name="SmallStone2" parent="." instance=ExtResource("5_xpqwd")]
+position = Vector2(671, 323)
+
+[node name="SmallStone3" parent="." instance=ExtResource("5_xpqwd")]
+position = Vector2(332, 618)
+
+[node name="SmallStone4" parent="." instance=ExtResource("5_xpqwd")]
+position = Vector2(435, 102)
+
+[node name="Tree7" parent="." instance=ExtResource("6_qnny2")]
+position = Vector2(1157, 240)
+
+[node name="SmallGrass" parent="." instance=ExtResource("7_wf07q")]
+position = Vector2(989, 656)
+
+[node name="SmallGrass2" parent="." instance=ExtResource("7_wf07q")]
+position = Vector2(658, 473)
+
+[node name="SmallGrass3" parent="." instance=ExtResource("7_wf07q")]
+position = Vector2(419, 432)
+
+[node name="SmallGrass4" parent="." instance=ExtResource("7_wf07q")]
+position = Vector2(555, 189)
+
+[node name="SmallGrass5" parent="." instance=ExtResource("7_wf07q")]
+position = Vector2(200, 573)
+
+[node name="SmallGrass6" parent="." instance=ExtResource("7_wf07q")]
+position = Vector2(1174, 286)

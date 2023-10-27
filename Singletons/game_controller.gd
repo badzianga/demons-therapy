@@ -1,7 +1,7 @@
 extends Node
 
-const LEVEL_HOURS: Array[int] =   [0, 1]
-const LEVEL_MINUTES: Array[int] = [0, 0]
+const LEVEL_HOURS: Array[int] =   [0, 5]
+const LEVEL_MINUTES: Array[int] = [0, 45]
 
 var level := 1
 var hour := 0
@@ -29,6 +29,7 @@ func _on_level_timer_timeout() -> void:
 	minute += 1
 	if minute >= 60:
 		hour += 1
+		minute = 0
 		if hour == 6:
 			print("Time end")
 			timer.stop()
