@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cvg0sjg6fcdar"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 5
+motion_mode = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]

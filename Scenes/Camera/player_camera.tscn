@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw68x47bbd258"]
+
+[ext_resource type="Script" path="res://Scenes/Camera/player_camera.gd" id="1_ak8fl"]
+
+[node name="PlayerCamera" type="Camera2D"]
+script = ExtResource("1_ak8fl")
+
+[node name="Positions" type="Node" parent="."]
+
+[node name="TopLeft" type="Marker2D" parent="Positions"]
+
+[node name="BottomRight" type="Marker2D" parent="Positions"]

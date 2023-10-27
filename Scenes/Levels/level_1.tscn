@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0exx5ftanscx"]
+
+[ext_resource type="PackedScene" uid="uid://cvg0sjg6fcdar" path="res://Scenes/Entities/player.tscn" id="1_mgtyt"]
+[ext_resource type="PackedScene" uid="uid://dw68x47bbd258" path="res://Scenes/Camera/player_camera.tscn" id="2_wkggp"]
+
+[node name="Level1" type="Node2D"]
+scale = Vector2(1, 1.00851)
+
+[node name="Player" parent="." instance=ExtResource("1_mgtyt")]
+
+[node name="PlayerCamera" parent="Player" instance=ExtResource("2_wkggp")]
+
+[editable path="Player/PlayerCamera"]

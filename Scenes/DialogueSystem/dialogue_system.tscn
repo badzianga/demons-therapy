@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0irhevhrck6j"]
+
+[ext_resource type="Texture2D" uid="uid://bph33h7ydnp1w" path="res://Assets/UI/blank_sheet.png" id="1_x2un4"]
+[ext_resource type="Script" path="res://Scenes/DialogueSystem/dialogue_system.gd" id="2_jg3wb"]
+
+[sub_resource type="Animation" id="Animation_pnfj1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(820, 140)]
+}
+
+[sub_resource type="Animation" id="Animation_t7bfj"]
+resource_name = "move"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(820, 140), Vector2(820, 160)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74lae"]
+_data = {
+"RESET": SubResource("Animation_pnfj1"),
+"move": SubResource("Animation_t7bfj")
+}
+
+[node name="DialogueSystem" type="TextureRect"]
+custom_minimum_size = Vector2(1000, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 300.0
+offset_top = -204.0
+offset_right = -300.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_x2un4")
+expand_mode = 1
+script = ExtResource("2_jg3wb")
+
+[node name="NameLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 14.0
+offset_right = 820.0
+offset_bottom = 70.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Name"
+
+[node name="TextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 70.0
+offset_right = 820.0
+offset_bottom = 174.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Text"
+
+[node name="Indicator" type="Polygon2D" parent="."]
+position = Vector2(820, 140)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(16, 0, -16, 0, 0, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator"]
+autoplay = "move"
+libraries = {
+"": SubResource("AnimationLibrary_74lae")
+}
+
+[node name="Timer" type="Timer" parent="."]
