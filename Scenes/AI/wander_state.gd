@@ -20,8 +20,11 @@ func enter_state() -> void:
 	print("Entered state: ", name)
 	set_physics_process(true)
 	animator.play("wander")
-	if actor.velocity == Vector2.ZERO:  # TODO: I don't know if this statement necessary
-		actor.velocity = Vector2.RIGHT.rotated(randf_range(0.0, TAU)) * speed
+	while (vision.is_colliding()):
+		vision.target_position = vision.target_position.rotated(randf_range(0.0, TAU))
+	
+	#if actor.velocity == Vector2.ZERO:  # TODO: I don't know if this statement necessary
+	actor.velocity = vision.target_position * speed
 
 
 func exit_state() -> void:
@@ -37,8 +40,8 @@ func _physics_process(delta: float) -> void:
 #	if collision:
 #		actor.velocity = actor.velocity.bounce(collision.get_normal())
 	
-	if not vision.is_colliding() and player_in_detection_area:
-		player_seen.emit()
+	#if not vision.is_colliding() and player_in_detection_area:
+	#	player_seen.emit()
 	# here goes look around state check
 
 
