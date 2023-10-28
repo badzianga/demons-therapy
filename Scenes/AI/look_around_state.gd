@@ -23,7 +23,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not vision.is_colliding() and actor.player_in_detection_area:
 		look_around_timer.stop()
 		player_seen.emit()
