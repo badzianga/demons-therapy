@@ -77,5 +77,5 @@ func _on_dig_area_area_entered(area: Pile) -> void:
 	pile = area
 
 
-func _on_dig_area_area_exited(area: Pile) -> void:
+func _on_dig_area_area_exited(_area: Pile) -> void:
 	pile = null
