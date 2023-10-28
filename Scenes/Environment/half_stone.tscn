@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://s6toqj452tap"]
+
+[ext_resource type="Texture2D" uid="uid://vmpsw4jrtrgg" path="res://Assets/Environment/half_stone.png" id="1_2yf17"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s81ns"]
+radius = 16.0
+height = 80.0
+
+[node name="HalfStone" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -23)
+texture = ExtResource("1_2yf17")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s81ns")

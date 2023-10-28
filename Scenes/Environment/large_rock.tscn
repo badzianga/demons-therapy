@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvn1bc5jluqnk"]
+
+[ext_resource type="Texture2D" uid="uid://dq0towpjx5xdg" path="res://Assets/Environment/large_rock.png" id="1_ng0xr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0er21"]
+radius = 32.0
+height = 80.0
+
+[node name="LargeRock" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("1_ng0xr")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0er21")

@@ -1,7 +1,9 @@
+class_name DialogueSystem
 extends TextureRect
 
-
-signal name_changed(actor_name: String)
+#signal actor_changed(actor_name: String)
+signal image_changed(image_path: String)
+signal dialog_finished
  
 @export_file("*.json") var dialog_path: String 
 @export var _text_speed := 0.025
@@ -19,7 +21,7 @@ var _finished := false
 func _ready() -> void:
 	$Timer.wait_time = _text_speed
 	_dialog = _get_dialog()
-	_next_phrase()
+	#_next_phrase()
 
 
 func _process(_delta: float) -> void:
@@ -46,12 +48,15 @@ func _get_dialog() -> Array:
 func _next_phrase() -> void:
 	if _phrase_number >= len(_dialog):
 		queue_free()
+		dialog_finished.emit()
 		return
 
 	_finished = false
 	_name_label.bbcode_text = _dialog[_phrase_number]["Name"]
 	_text_label.bbcode_text = _dialog[_phrase_number]["Text"]
-	name_changed.emit(_dialog[_phrase_number]["Name"])
+	if _dialog[_phrase_number].has("Image"):
+		image_changed.emit(_dialog[_phrase_number]["Image"])
+	#actor_changed.emit(_dialog[_phrase_number]["Name"])
 
 	_text_label.visible_characters = 0
 	while _text_label.visible_characters < len(_text_label.text):

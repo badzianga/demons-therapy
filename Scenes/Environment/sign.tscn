@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvds4lp08mkv0"]
+
+[ext_resource type="Texture2D" uid="uid://3ns6qbaoghk0" path="res://Assets/Environment/sign.png" id="1_hlw6a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11jgh"]
+radius = 14.3178
+
+[node name="Sign" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -55)
+texture = ExtResource("1_hlw6a")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_11jgh")

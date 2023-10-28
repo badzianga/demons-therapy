@@ -3,7 +3,6 @@ extends CanvasLayer
 
 func _ready() -> void:
 	visible = false
-	print(AudioServer.get_bus_volume_db(1), " ", AudioServer.get_bus_volume_db(2))
 	$Background/PauseContainer/AudioSettings/HBoxContainer/MusicSlider.value = AudioServer.get_bus_volume_db(1)
 	$Background/PauseContainer/AudioSettings/HBoxContainer2/SoundsSlider.value = AudioServer.get_bus_volume_db(2)
 

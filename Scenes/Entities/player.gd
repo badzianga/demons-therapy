@@ -9,6 +9,8 @@ var stamina := 100
 var stamina_depleted := false
 var sprinting := false
 
+var pile: Pile = null
+
 @onready var sprite := $Sprite
 @onready var animation_player := $AnimationPlayer
 @onready var walk_sound := $WalkSound
@@ -22,6 +24,7 @@ func _physics_process(_delta: float) -> void:
 	handle_movement()
 	handle_animations()
 	GameController.set_stamina(stamina)
+	check_digging()
 
 
 func handle_movement() -> void:
@@ -63,3 +66,16 @@ func handle_animations() -> void:
 	if direction.x == 0:
 		return
 	sprite.flip_h = (direction.x < 0)
+
+
+func check_digging() -> void:
+	if Input.is_action_just_pressed("dig") and pile != null:
+		pile.dig()
+
+
+func _on_dig_area_area_entered(area: Pile) -> void:
+	pile = area
+
+
+func _on_dig_area_area_exited(_area: Pile) -> void:
+	pile = null
