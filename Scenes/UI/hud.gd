@@ -12,7 +12,7 @@ func set_time(hour: int, minute: int) -> void:
 		minute_string = "0" + str(minute) 
 	else:
 		minute_string = str(minute)
-	time_label.text = str(hour) + ":" + minute_string
+	time_label.text = str(hour) + " AM" + "\n(" + str(hour) + ":" + minute_string + ")"
 
 
 # called in game controller by player

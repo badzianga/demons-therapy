@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
+	$AnimationPlayer.play("wander")
 	wander_state.player_seen.connect(fsm.change_state.bind(chase_state))
 	chase_state.player_lost.connect(fsm.change_state.bind(wander_state))
 

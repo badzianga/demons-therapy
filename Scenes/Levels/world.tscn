@@ -27,13 +27,14 @@ position_smoothing_speed = 2.0
 position = Vector2(2050, 1130)
 
 [node name="AmbientLight" type="DirectionalLight2D" parent="."]
+visible = false
 energy = 0.9
 blend_mode = 1
 
 [node name="HUD" parent="." instance=ExtResource("5_7ckks")]
 
 [node name="Demon" parent="." instance=ExtResource("6_rsrkk")]
-position = Vector2(1100, 313)
+position = Vector2(1503, 321)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_mgdlq")

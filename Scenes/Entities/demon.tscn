@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://vq0i68658o1u"]
+[gd_scene load_steps=13 format=3 uid="uid://vq0i68658o1u"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/demon.gd" id="1_2e0nd"]
 [ext_resource type="Texture2D" uid="uid://bx777db45qtb3" path="res://Assets/Entities/demon.png" id="1_xdmch"]
@@ -9,7 +9,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvyom"]
 radius = 26.0
-height = 172.0
+height = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xyucv"]
 radius = 384.0
@@ -47,9 +47,28 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_dlv2u"]
+resource_name = "chase"
+length = 0.6
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ob5th"]
 _data = {
 "RESET": SubResource("Animation_2gllq"),
+"chase": SubResource("Animation_dlv2u"),
 "wander": SubResource("Animation_ll6sb")
 }
 
@@ -90,7 +109,7 @@ volume_db = 10.0
 max_distance = 1000.0
 
 [node name="Vision" type="RayCast2D" parent="."]
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 192)
 
 [node name="PlayerDetectionArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -100,10 +119,10 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_xyucv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "wander"
 libraries = {
 "": SubResource("AnimationLibrary_ob5th")
 }
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="FiniteStateMachine/WanderState" method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="FiniteStateMachine/WanderState" method="_on_player_detection_area_body_exited"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="FiniteStateMachine/ChaseState" method="_on_player_detection_area_body_exited"]
