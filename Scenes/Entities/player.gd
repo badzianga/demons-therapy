@@ -1,13 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
-
 @export var speed := 175.0
 @export var sprint_factor := 1.75
 
 var direction := Vector2.ZERO
 var stamina := 100
 var stamina_depleted := false
+var sprinting := false
 
 @onready var sprite := $Sprite
 @onready var animation_player := $AnimationPlayer
@@ -30,11 +30,13 @@ func handle_movement() -> void:
 	
 	if direction:
 		if Input.is_action_pressed("sprint") and not stamina_depleted:
+			sprinting = true
 			velocity = direction.normalized() * speed * sprint_factor
 			stamina -= 2
 			if stamina < 0:
 				stamina_depleted = true
 		else:
+			sprinting = false
 			velocity = direction.normalized() * speed
 		
 		if not walk_sound.playing:
@@ -52,7 +54,10 @@ func handle_movement() -> void:
 
 func handle_animations() -> void:
 	if direction != Vector2.ZERO:
-		animation_player.play("walk")
+		if sprinting:
+			animation_player.play("run")
+		else:
+			animation_player.play("walk")
 	else:
 		animation_player.play("idle")
 	if direction.x == 0:

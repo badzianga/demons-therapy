@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvg0sjg6fcdar"]
+[gd_scene load_steps=12 format=3 uid="uid://cvg0sjg6fcdar"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_j3w4g"]
 [ext_resource type="Texture2D" uid="uid://bnrldjjwa7mvu" path="res://Assets/Entities/player.png" id="2_jq45s"]
@@ -25,23 +25,6 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_ykd4o"]
-resource_name = "walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4]
-}
-
 [sub_resource type="Animation" id="Animation_f0qp8"]
 length = 0.001
 tracks/0/type = "value"
@@ -57,11 +40,47 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_ykd4o"]
+resource_name = "run"
+length = 0.84
+loop_mode = 1
+step = 0.14
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.28, 0.42, 0.56, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_kmegr"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bo5i3"]
 _data = {
 "RESET": SubResource("Animation_f0qp8"),
 "idle": SubResource("Animation_qlumr"),
-"walk": SubResource("Animation_ykd4o")
+"run": SubResource("Animation_ykd4o"),
+"walk": SubResource("Animation_kmegr")
 }
 
 [sub_resource type="Gradient" id="Gradient_ao0fr"]
@@ -84,7 +103,7 @@ script = ExtResource("1_j3w4g")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -54)
 texture = ExtResource("2_jq45s")
-hframes = 5
+hframes = 9
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
