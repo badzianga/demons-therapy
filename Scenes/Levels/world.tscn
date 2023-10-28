@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt42bketsexyd"]
+[gd_scene load_steps=8 format=3 uid="uid://bt42bketsexyd"]
 
 [ext_resource type="PackedScene" uid="uid://b0exx5ftanscx" path="res://Scenes/Levels/level_1.tscn" id="1_gv0fi"]
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_k464s"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dw68x47bbd258" path="res://Scenes/Camera/player_camera.tscn" id="3_55krn"]
 [ext_resource type="PackedScene" uid="uid://ceegmqeonmn7f" path="res://Scenes/UI/hud.tscn" id="5_7ckks"]
 [ext_resource type="PackedScene" uid="uid://vq0i68658o1u" path="res://Scenes/Entities/demon.tscn" id="6_rsrkk"]
+[ext_resource type="AudioStream" uid="uid://djk0w6xpwvnwd" path="res://Assets/Music/music.mp3" id="7_mgdlq"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -19,7 +20,7 @@ position = Vector2(508, 332)
 [node name="PlayerCamera" parent="Player" instance=ExtResource("3_55krn")]
 
 [node name="BottomRight" parent="Player/PlayerCamera/Positions" index="1"]
-position = Vector2(1280, 720)
+position = Vector2(2050, 1130)
 
 [node name="AmbientLight" type="DirectionalLight2D" parent="."]
 energy = 0.9
@@ -29,5 +30,10 @@ blend_mode = 1
 
 [node name="Demon" parent="." instance=ExtResource("6_rsrkk")]
 position = Vector2(590, 261)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_mgdlq")
+autoplay = true
+bus = &"Music"
 
 [editable path="Player/PlayerCamera"]

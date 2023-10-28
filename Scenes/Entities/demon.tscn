@@ -1,14 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://vq0i68658o1u"]
+[gd_scene load_steps=8 format=3 uid="uid://vq0i68658o1u"]
 
+[ext_resource type="Script" path="res://Scenes/Entities/demon.gd" id="1_2e0nd"]
 [ext_resource type="Texture2D" uid="uid://duj2ai274xs3f" path="res://Assets/Entities/demon.png" id="1_xdmch"]
+[ext_resource type="Script" path="res://Scenes/AI/finite_state_machine.gd" id="2_mmi4f"]
+[ext_resource type="Script" path="res://Scenes/AI/wander_state.gd" id="4_yvyy4"]
+[ext_resource type="AudioStream" uid="uid://b7hu4dvb26npq" path="res://Assets/Sounds/hello_there.mp3" id="5_57cof"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvyom"]
 height = 34.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xyucv"]
+radius = 24.0
+
 [node name="Demon" type="CharacterBody2D"]
-collision_layer = 5
+collision_layer = 4
 collision_mask = 3
 motion_mode = 1
+script = ExtResource("1_2e0nd")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-29, -68)
@@ -18,3 +26,29 @@ texture = ExtResource("1_xdmch")
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hvyom")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("2_mmi4f")
+state = NodePath("WanderState")
+
+[node name="WanderState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "vision")]
+script = ExtResource("4_yvyy4")
+actor = NodePath("../..")
+vision = NodePath("../../Vision")
+
+[node name="Vision" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+
+[node name="HelloThereSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_57cof")
+volume_db = 10.0
+max_distance = 1000.0
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
+shape = SubResource("CircleShape2D_xyucv")
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]

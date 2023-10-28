@@ -1,6 +1,6 @@
 extends Node
 
-const LEVEL_HOURS: Array[int] =   [0, 1]
+const LEVEL_HOURS: Array[int] =   [0, 5]
 const LEVEL_MINUTES: Array[int] = [0, 0]
 
 var level := 1
@@ -10,6 +10,7 @@ var minute := 0
 # set outside this script
 var ambient_light: DirectionalLight2D
 var hud: HUD
+var player: Player
 
 
 @onready var timer := $Timer

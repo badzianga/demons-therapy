@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 
@@ -11,6 +12,10 @@ var stamina_depleted := false
 @onready var sprite := $Sprite
 @onready var animation_player := $AnimationPlayer
 @onready var walk_sound := $WalkSound
+
+
+func _ready() -> void:
+	GameController.player = self
 
 
 func _physics_process(_delta: float) -> void:
