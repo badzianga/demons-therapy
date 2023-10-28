@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_j3w4g"]
 [ext_resource type="Texture2D" uid="uid://bnrldjjwa7mvu" path="res://Assets/Entities/player.png" id="2_jq45s"]
-[ext_resource type="AudioStream" uid="uid://cgqnjuuixynbl" path="res://Assets/Sounds/grass_sound.mp3" id="3_q58qb"]
+[ext_resource type="AudioStream" uid="uid://cgqnjuuixynbl" path="res://Assets/Sounds/Player/grass_sound.mp3" id="3_i3hgc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djfv7"]
 radius = 8.99999
@@ -121,7 +121,7 @@ libraries = {
 texture = SubResource("GradientTexture2D_0yfcx")
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_q58qb")
+stream = ExtResource("3_i3hgc")
 bus = &"Sounds"
 
 [node name="DigArea" type="Area2D" parent="."]

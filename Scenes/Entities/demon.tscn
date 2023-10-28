@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bx777db45qtb3" path="res://Assets/Entities/demon.png" id="1_xdmch"]
 [ext_resource type="Script" path="res://Scenes/AI/finite_state_machine.gd" id="2_mmi4f"]
 [ext_resource type="Script" path="res://Scenes/AI/wander_state.gd" id="4_yvyy4"]
-[ext_resource type="AudioStream" uid="uid://b7hu4dvb26npq" path="res://Assets/Sounds/hello_there.mp3" id="5_57cof"]
+[ext_resource type="AudioStream" uid="uid://b7hu4dvb26npq" path="res://Assets/Sounds/Demon/hello_there.mp3" id="5_57cof"]
 [ext_resource type="Script" path="res://Scenes/AI/chase_state.gd" id="5_jh52n"]
 [ext_resource type="Script" path="res://Scenes/AI/look_around_state.gd" id="7_f0a6y"]
 

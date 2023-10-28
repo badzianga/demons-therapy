@@ -4,7 +4,7 @@ const LEVEL_HOURS: Array[int] =   [0, 1]
 const LEVEL_MINUTES: Array[int] = [0, 0]
 const MUSIC: Dictionary = {
 	"menu": preload("res://Assets/Music/music.mp3"),
-	"level": preload("res://Assets/Music/level.mp3"),
+	"level": preload("res://Assets/Music/background_ambient.mp3"),
 }
 
 var level := 0
