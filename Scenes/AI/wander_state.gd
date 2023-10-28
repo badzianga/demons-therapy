@@ -32,3 +32,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not vision.is_colliding():
 		player_seen.emit()
+
+
+func _on_player_detection_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
