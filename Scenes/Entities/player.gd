@@ -48,4 +48,4 @@ func handle_movement() -> void:
 func handle_animations() -> void:
 	if direction.x == 0:
 		return
-	sprite.flip_h = (direction.x < 0)
+	sprite.flip_h = (direction.x > 0)

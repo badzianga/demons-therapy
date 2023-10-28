@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://cgqnjuuixynbl" path="res://Assets/Sounds/grass_sound.mp3" id="3_q58qb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djfv7"]
-radius = 20.0
-height = 100.0
+radius = 8.99999
+height = 36.0
 
 [sub_resource type="Gradient" id="Gradient_ao0fr"]
 offsets = PackedFloat32Array(0, 0.729032)
@@ -26,8 +26,7 @@ motion_mode = 1
 script = ExtResource("1_j3w4g")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-1, -46)
-scale = Vector2(0.15, 0.15)
+position = Vector2(0, -54)
 texture = ExtResource("2_jq45s")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
