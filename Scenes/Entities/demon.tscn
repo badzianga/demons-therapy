@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://vq0i68658o1u"]
+[gd_scene load_steps=9 format=3 uid="uid://vq0i68658o1u"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/demon.gd" id="1_2e0nd"]
 [ext_resource type="Texture2D" uid="uid://duj2ai274xs3f" path="res://Assets/Entities/demon.png" id="1_xdmch"]
 [ext_resource type="Script" path="res://Scenes/AI/finite_state_machine.gd" id="2_mmi4f"]
 [ext_resource type="Script" path="res://Scenes/AI/wander_state.gd" id="4_yvyy4"]
 [ext_resource type="AudioStream" uid="uid://b7hu4dvb26npq" path="res://Assets/Sounds/hello_there.mp3" id="5_57cof"]
+[ext_resource type="Script" path="res://Scenes/AI/chase_state.gd" id="5_jh52n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvyom"]
 height = 34.0
@@ -19,7 +20,7 @@ motion_mode = 1
 script = ExtResource("1_2e0nd")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-29, -68)
+position = Vector2(0, -68)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_xdmch")
 
@@ -31,9 +32,16 @@ shape = SubResource("CapsuleShape2D_hvyom")
 script = ExtResource("2_mmi4f")
 state = NodePath("WanderState")
 
-[node name="WanderState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "vision")]
+[node name="WanderState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "vision")]
 script = ExtResource("4_yvyy4")
 actor = NodePath("../..")
+sprite = NodePath("../../Sprite")
+vision = NodePath("../../Vision")
+
+[node name="ChaseState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "vision")]
+script = ExtResource("5_jh52n")
+actor = NodePath("../..")
+sprite = NodePath("../../Sprite")
 vision = NodePath("../../Vision")
 
 [node name="Vision" type="RayCast2D" parent="."]
