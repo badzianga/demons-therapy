@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=3 uid="uid://0luf8s1i3aey"]
+
+[ext_resource type="Script" path="res://Scenes/UI/pause.gd" id="1_e8r77"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blax7"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_e8r77")
+
+[node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(400, 420)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_blax7")
+
+[node name="PauseContainer" type="VBoxContainer" parent="Background"]
+custom_minimum_size = Vector2(400, 420)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Background/PauseContainer"]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="Background/PauseContainer"]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Quit to menu"
+
+[node name="QuitButton" type="Button" parent="Background/PauseContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Quit to desktop"
+
+[node name="Margin" type="Control" parent="Background/PauseContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="AudioSettings" type="VBoxContainer" parent="Background/PauseContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Background/PauseContainer/AudioSettings"]
+layout_mode = 2
+text = "Audio settings:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/PauseContainer/AudioSettings"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="Background/PauseContainer/AudioSettings/HBoxContainer"]
+custom_minimum_size = Vector2(64, 26)
+layout_mode = 2
+text = "Music: "
+
+[node name="MusicSlider" type="HSlider" parent="Background/PauseContainer/AudioSettings/HBoxContainer"]
+custom_minimum_size = Vector2(130, 26)
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/PauseContainer/AudioSettings"]
+layout_mode = 2
+
+[node name="SoundsLabel" type="Label" parent="Background/PauseContainer/AudioSettings/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 26)
+layout_mode = 2
+text = "Sounds:"
+
+[node name="SoundsSlider" type="HSlider" parent="Background/PauseContainer/AudioSettings/HBoxContainer2"]
+custom_minimum_size = Vector2(130, 26)
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+
+[connection signal="pressed" from="Background/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Background/PauseContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Background/PauseContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="Background/PauseContainer/AudioSettings/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Background/PauseContainer/AudioSettings/HBoxContainer2/SoundsSlider" to="." method="_on_sounds_slider_value_changed"]

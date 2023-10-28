@@ -55,7 +55,7 @@ position = Vector2(2050, 1130)
 shape = SubResource("WorldBoundaryShape2D_rtfuv")
 
 [node name="Tree1" parent="." instance=ExtResource("1_t86hg")]
-position = Vector2(141, 325)
+position = Vector2(193, 330)
 
 [node name="Tree2" parent="." instance=ExtResource("1_t86hg")]
 position = Vector2(252, 296)

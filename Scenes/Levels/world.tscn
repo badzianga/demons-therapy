@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt42bketsexyd"]
+[gd_scene load_steps=10 format=3 uid="uid://bt42bketsexyd"]
 
 [ext_resource type="PackedScene" uid="uid://b0exx5ftanscx" path="res://Scenes/Levels/level_1.tscn" id="1_gv0fi"]
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_k464s"]
@@ -8,12 +8,37 @@
 [ext_resource type="PackedScene" uid="uid://vq0i68658o1u" path="res://Scenes/Entities/demon.tscn" id="6_rsrkk"]
 [ext_resource type="AudioStream" uid="uid://djk0w6xpwvnwd" path="res://Assets/Music/music.mp3" id="7_mgdlq"]
 [ext_resource type="PackedScene" uid="uid://dc1cgl6uyeust" path="res://Scenes/Entities/firefly.tscn" id="8_ke2a0"]
+[ext_resource type="PackedScene" uid="uid://0luf8s1i3aey" path="res://Scenes/UI/pause.tscn" id="9_4k4nh"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_k464s")
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_mgdlq")
+autoplay = true
+bus = &"Music"
+
+[node name="AmbientLight" type="DirectionalLight2D" parent="."]
+energy = 0.9
+blend_mode = 1
+
 [node name="Level1" parent="." instance=ExtResource("1_gv0fi")]
+
+[node name="Fireflies" type="Node2D" parent="."]
+
+[node name="Firefly" parent="Fireflies" instance=ExtResource("8_ke2a0")]
+position = Vector2(916, 525)
+
+[node name="Firefly2" parent="Fireflies" instance=ExtResource("8_ke2a0")]
+position = Vector2(938, 514)
+
+[node name="Firefly3" parent="Fireflies" instance=ExtResource("8_ke2a0")]
+position = Vector2(859, 563)
+
+[node name="Firefly4" parent="Fireflies" instance=ExtResource("8_ke2a0")]
+position = Vector2(940, 554)
 
 [node name="Player" parent="." instance=ExtResource("2_frd0a")]
 position = Vector2(508, 332)
@@ -26,31 +51,11 @@ position_smoothing_speed = 2.0
 [node name="BottomRight" parent="Player/PlayerCamera/Positions" index="1"]
 position = Vector2(2050, 1130)
 
-[node name="AmbientLight" type="DirectionalLight2D" parent="."]
-visible = false
-energy = 0.9
-blend_mode = 1
-
-[node name="HUD" parent="." instance=ExtResource("5_7ckks")]
-
 [node name="Demon" parent="." instance=ExtResource("6_rsrkk")]
 position = Vector2(805, 561)
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_mgdlq")
-autoplay = true
-bus = &"Music"
+[node name="HUD" parent="." instance=ExtResource("5_7ckks")]
 
-[node name="Firefly" parent="." instance=ExtResource("8_ke2a0")]
-position = Vector2(916, 525)
-
-[node name="Firefly2" parent="." instance=ExtResource("8_ke2a0")]
-position = Vector2(938, 514)
-
-[node name="Firefly3" parent="." instance=ExtResource("8_ke2a0")]
-position = Vector2(859, 563)
-
-[node name="Firefly4" parent="." instance=ExtResource("8_ke2a0")]
-position = Vector2(940, 554)
+[node name="Pause" parent="." instance=ExtResource("9_4k4nh")]
 
 [editable path="Player/PlayerCamera"]
