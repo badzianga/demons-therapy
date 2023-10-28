@@ -7,4 +7,7 @@ script = ExtResource("1_vjir3")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
 [connection signal="timeout" from="Timer" to="." method="_on_level_timer_timeout"]

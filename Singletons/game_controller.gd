@@ -2,8 +2,12 @@ extends Node
 
 const LEVEL_HOURS: Array[int] =   [0, 1]
 const LEVEL_MINUTES: Array[int] = [0, 0]
+const MUSIC: Dictionary = {
+	"menu": preload("res://Assets/Music/music.mp3"),
+	"level": preload("res://Assets/Music/level.mp3"),
+}
 
-var level := 1
+var level := 0
 var hour := 0
 var minute := 0
 
@@ -13,17 +17,33 @@ var hud: HUD
 var player: Player
 
 @onready var timer := $Timer
+@onready var music_player := $MusicPlayer
 
 
 func _ready() -> void:
 	randomize()
 
 
+func play_music(type: String) -> void:
+	music_player.stream = MUSIC[type]
+	music_player.play()
+
+
+func start_game() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/therapy.tscn")
+
+
+func go_to_world() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Levels/world.tscn")
+
+
 func start_level() -> void:
+	level += 1
 	hour = LEVEL_HOURS[level]
 	minute = LEVEL_MINUTES[level]
 	timer.start()
 	set_ambient_light()
+	print("world should be ready here")
 	hud.set_time(hour, minute)
 
 

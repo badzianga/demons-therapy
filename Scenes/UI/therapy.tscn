@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7glwh7lk50rm"]
+
+[ext_resource type="Script" path="res://Scenes/UI/therapy.gd" id="1_743ur"]
+[ext_resource type="PackedScene" uid="uid://d0irhevhrck6j" path="res://Scenes/DialogueSystem/dialogue_system.tscn" id="2_o4868"]
+[ext_resource type="Texture2D" uid="uid://dxe6sjncvo6go" path="res://Assets/UI/therapy_room.png" id="2_v2685"]
+
+[node name="Therapy" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_743ur")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+texture = ExtResource("2_v2685")
+
+[node name="DialogueSystem" parent="." instance=ExtResource("2_o4868")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -616.0
+offset_top = -696.0
+offset_right = 384.0
+offset_bottom = -496.0
+dialog_path = "res://Assets/Dialogs/dialog_0.json"
+
+[node name="BiedaImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkipButton" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -85.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Skip"
+
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
