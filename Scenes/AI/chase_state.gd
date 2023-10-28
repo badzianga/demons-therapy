@@ -5,14 +5,17 @@ extends State
 @export var sprite: Sprite2D
 @export var animator: AnimationPlayer
 @export var vision: RayCast2D
+@export var hello_there_sound: AudioStreamPlayer2D
 @export var speed := 200.0
 
 signal player_lost
 
 
 func enter_state() -> void:
+	hello_there_sound.play()
 	print("Entered state: ", name)
 	set_physics_process(true)
+	animator.play("chase")
 
 
 func exit_state() -> void:

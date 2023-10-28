@@ -137,12 +137,13 @@ wander_timer = NodePath("WanderTimer")
 [node name="WanderTimer" type="Timer" parent="FiniteStateMachine/WanderState"]
 one_shot = true
 
-[node name="ChaseState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "vision")]
+[node name="ChaseState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "vision", "hello_there_sound")]
 script = ExtResource("5_jh52n")
 actor = NodePath("../..")
 sprite = NodePath("../../Sprite")
 animator = NodePath("../../AnimationPlayer")
 vision = NodePath("../../Vision")
+hello_there_sound = NodePath("HelloThereSound")
 
 [node name="HelloThereSound" type="AudioStreamPlayer2D" parent="FiniteStateMachine/ChaseState"]
 stream = ExtResource("5_57cof")
