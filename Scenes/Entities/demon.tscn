@@ -1,17 +1,57 @@
-[gd_scene load_steps=9 format=3 uid="uid://vq0i68658o1u"]
+[gd_scene load_steps=12 format=3 uid="uid://vq0i68658o1u"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/demon.gd" id="1_2e0nd"]
-[ext_resource type="Texture2D" uid="uid://duj2ai274xs3f" path="res://Assets/Entities/demon.png" id="1_xdmch"]
+[ext_resource type="Texture2D" uid="uid://bx777db45qtb3" path="res://Assets/Entities/demon.png" id="1_xdmch"]
 [ext_resource type="Script" path="res://Scenes/AI/finite_state_machine.gd" id="2_mmi4f"]
 [ext_resource type="Script" path="res://Scenes/AI/wander_state.gd" id="4_yvyy4"]
 [ext_resource type="AudioStream" uid="uid://b7hu4dvb26npq" path="res://Assets/Sounds/hello_there.mp3" id="5_57cof"]
 [ext_resource type="Script" path="res://Scenes/AI/chase_state.gd" id="5_jh52n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvyom"]
-height = 34.0
+radius = 26.0
+height = 172.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xyucv"]
 radius = 384.0
+
+[sub_resource type="Animation" id="Animation_ll6sb"]
+resource_name = "wander"
+length = 1.2
+loop_mode = 1
+step = 0.24
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.48, 0.72, 0.96),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_2gllq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ob5th"]
+_data = {
+"RESET": SubResource("Animation_2gllq"),
+"wander": SubResource("Animation_ll6sb")
+}
 
 [node name="Demon" type="CharacterBody2D"]
 collision_layer = 4
@@ -20,9 +60,9 @@ motion_mode = 1
 script = ExtResource("1_2e0nd")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -68)
-scale = Vector2(0.25, 0.25)
+position = Vector2(0, -80)
 texture = ExtResource("1_xdmch")
+hframes = 5
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -58,6 +98,12 @@ collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
 shape = SubResource("CircleShape2D_xyucv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "wander"
+libraries = {
+"": SubResource("AnimationLibrary_ob5th")
+}
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="FiniteStateMachine/WanderState" method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="FiniteStateMachine/ChaseState" method="_on_player_detection_area_body_exited"]

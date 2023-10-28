@@ -22,7 +22,7 @@ func exit_state() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if actor.velocity.x != 0:
-		sprite.flip_h = (actor.velocity.x > 0)
+		sprite.flip_h = (actor.velocity.x < 0)
 	
 	var direction := actor.global_position.direction_to(GameController.player.global_position)
 	actor.velocity = direction * speed

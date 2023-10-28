@@ -24,7 +24,7 @@ func exit_state() -> void:
 
 func _physics_process(delta: float) -> void:
 	if actor.velocity.x != 0:
-		sprite.flip_h = (actor.velocity.x > 0)
+		sprite.flip_h = (actor.velocity.x < 0)
 	
 	var collision := actor.move_and_collide(actor.velocity * delta)
 	if collision:
