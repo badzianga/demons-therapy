@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc1cgl6uyeust"]
+
+[ext_resource type="Texture2D" uid="uid://pwkb0rvjwkrl" path="res://Assets/Entities/firefly.png" id="1_r0b3u"]
+[ext_resource type="Script" path="res://Scenes/Entities/firefly.gd" id="2_ndxuf"]
+
+[sub_resource type="Gradient" id="Gradient_sjg6w"]
+offsets = PackedFloat32Array(0, 0.741935)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bn17h"]
+gradient = SubResource("Gradient_sjg6w")
+width = 48
+height = 48
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Firefly" type="Sprite2D"]
+texture = ExtResource("1_r0b3u")
+script = ExtResource("2_ndxuf")
+
+[node name="Light" type="PointLight2D" parent="."]
+color = Color(0.52549, 0.823529, 0.235294, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_bn17h")

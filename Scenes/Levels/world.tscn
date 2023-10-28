@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt42bketsexyd"]
+[gd_scene load_steps=9 format=3 uid="uid://bt42bketsexyd"]
 
 [ext_resource type="PackedScene" uid="uid://b0exx5ftanscx" path="res://Scenes/Levels/level_1.tscn" id="1_gv0fi"]
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_k464s"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ceegmqeonmn7f" path="res://Scenes/UI/hud.tscn" id="5_7ckks"]
 [ext_resource type="PackedScene" uid="uid://vq0i68658o1u" path="res://Scenes/Entities/demon.tscn" id="6_rsrkk"]
 [ext_resource type="AudioStream" uid="uid://djk0w6xpwvnwd" path="res://Assets/Music/music.mp3" id="7_mgdlq"]
+[ext_resource type="PackedScene" uid="uid://dc1cgl6uyeust" path="res://Scenes/Entities/firefly.tscn" id="8_ke2a0"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -16,8 +17,6 @@ script = ExtResource("1_k464s")
 
 [node name="Player" parent="." instance=ExtResource("2_frd0a")]
 position = Vector2(508, 332)
-speed = 175.0
-sprint_factor = 1.75
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("3_55krn")]
 zoom = Vector2(1.2, 1.2)
@@ -40,5 +39,17 @@ position = Vector2(1100, 313)
 stream = ExtResource("7_mgdlq")
 autoplay = true
 bus = &"Music"
+
+[node name="Firefly" parent="." instance=ExtResource("8_ke2a0")]
+position = Vector2(916, 525)
+
+[node name="Firefly2" parent="." instance=ExtResource("8_ke2a0")]
+position = Vector2(938, 514)
+
+[node name="Firefly3" parent="." instance=ExtResource("8_ke2a0")]
+position = Vector2(859, 563)
+
+[node name="Firefly4" parent="." instance=ExtResource("8_ke2a0")]
+position = Vector2(940, 554)
 
 [editable path="Player/PlayerCamera"]
