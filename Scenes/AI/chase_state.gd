@@ -31,6 +31,3 @@ func _physics_process(_delta: float) -> void:
 	if vision.is_colliding():
 		player_lost.emit()
 
-
-func _on_player_detection_area_body_exited(body: Node2D) -> void:
-	pass
