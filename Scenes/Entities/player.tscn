@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvg0sjg6fcdar"]
+[gd_scene load_steps=11 format=3 uid="uid://cvg0sjg6fcdar"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_j3w4g"]
 [ext_resource type="Texture2D" uid="uid://bnrldjjwa7mvu" path="res://Assets/Entities/player.png" id="2_jq45s"]
@@ -7,6 +7,62 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djfv7"]
 radius = 8.99999
 height = 36.0
+
+[sub_resource type="Animation" id="Animation_qlumr"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ykd4o"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_f0qp8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bo5i3"]
+_data = {
+"RESET": SubResource("Animation_f0qp8"),
+"idle": SubResource("Animation_qlumr"),
+"walk": SubResource("Animation_ykd4o")
+}
 
 [sub_resource type="Gradient" id="Gradient_ao0fr"]
 offsets = PackedFloat32Array(0, 0.729032)
@@ -28,12 +84,16 @@ script = ExtResource("1_j3w4g")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -54)
 texture = ExtResource("2_jq45s")
+hframes = 5
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_djfv7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bo5i3")
+}
 
 [node name="Light" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_0yfcx")

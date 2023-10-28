@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
-@export var speed := 300.0
+@export var speed := 175.0
 @export var sprint_factor := 1.75
 
 var direction := Vector2.ZERO
@@ -51,6 +51,10 @@ func handle_movement() -> void:
 
 
 func handle_animations() -> void:
+	if direction != Vector2.ZERO:
+		animation_player.play("walk")
+	else:
+		animation_player.play("idle")
 	if direction.x == 0:
 		return
-	sprite.flip_h = (direction.x > 0)
+	sprite.flip_h = (direction.x < 0)

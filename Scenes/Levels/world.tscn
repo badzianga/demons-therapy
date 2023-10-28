@@ -18,6 +18,9 @@ script = ExtResource("1_k464s")
 position = Vector2(508, 332)
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("3_55krn")]
+zoom = Vector2(1.2, 1.2)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="BottomRight" parent="Player/PlayerCamera/Positions" index="1"]
 position = Vector2(2050, 1130)
