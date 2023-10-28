@@ -45,7 +45,7 @@ position_smoothing_speed = 2.0
 position = Vector2(2050, 1130)
 
 [node name="Demon" parent="." instance=ExtResource("6_rsrkk")]
-position = Vector2(705, 541)
+position = Vector2(662, 967)
 
 [node name="HUD" parent="." instance=ExtResource("5_7ckks")]
 
