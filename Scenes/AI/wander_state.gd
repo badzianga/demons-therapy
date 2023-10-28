@@ -14,17 +14,21 @@ const WANDER_VISION_RADIUS = 192
 @export var speed := 125.0
 
 var player_in_detection_area := false
+var target_position: Vector2
 
 
 func enter_state() -> void:
 	print("Entered state: ", name)
 	set_physics_process(true)
 	animator.play("wander")
+	var direction := Vector2.RIGHT.rotated(randf_range(0.0, TAU))
+	vision.target_position = vision.position - direction * WANDER_VISION_RADIUS
 	while (vision.is_colliding()):
-		vision.target_position = vision.target_position.rotated(randf_range(0.0, TAU))
+		direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU))
+		vision.target_position = vision.global_position - direction * WANDER_VISION_RADIUS
 	
 	#if actor.velocity == Vector2.ZERO:  # TODO: I don't know if this statement necessary
-	actor.velocity = vision.target_position * speed
+	actor.velocity = vision.target_position.normalized() * speed
 
 
 func exit_state() -> void:
@@ -39,6 +43,8 @@ func _physics_process(delta: float) -> void:
 #	var collision := actor.move_and_collide(actor.velocity * delta)
 #	if collision:
 #		actor.velocity = actor.velocity.bounce(collision.get_normal())
+	
+	actor.move_and_slide()
 	
 	#if not vision.is_colliding() and player_in_detection_area:
 	#	player_seen.emit()

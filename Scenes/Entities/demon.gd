@@ -14,4 +14,6 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	vision.target_position =  GameController.player.global_position - global_position
+	#vision.target_position =  GameController.player.global_position - global_position
+	pass
+	

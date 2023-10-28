@@ -12,8 +12,11 @@ var ambient_light: DirectionalLight2D
 var hud: HUD
 var player: Player
 
-
 @onready var timer := $Timer
+
+
+func _ready() -> void:
+	randomize()
 
 
 func start_level() -> void:
