@@ -20,3 +20,4 @@ func _ready() -> void:
 			spawned_treasure = true
 			pile.has_treasure = true
 		add_child(pile)
+		print(pile)
