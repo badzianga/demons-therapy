@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt42bketsexyd"]
+[gd_scene load_steps=17 format=3 uid="uid://bt42bketsexyd"]
 
 [ext_resource type="PackedScene" uid="uid://b0exx5ftanscx" path="res://Scenes/Levels/level_1.tscn" id="1_gv0fi"]
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_k464s"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://0luf8s1i3aey" path="res://Scenes/UI/pause.tscn" id="9_4k4nh"]
 [ext_resource type="AudioStream" uid="uid://msr00u2b7jg0" path="res://Assets/Sounds/Background/wind.mp3" id="9_xam88"]
 [ext_resource type="Script" path="res://Scenes/Sounds/wind_sound.gd" id="10_kab1e"]
+[ext_resource type="AudioStream" uid="uid://hpgvueq27tyf" path="res://Assets/Sounds/Entities/owl.mp3" id="11_pptxq"]
+[ext_resource type="Script" path="res://Scenes/Levels/owl_sound.gd" id="12_5dws7"]
+[ext_resource type="AudioStream" uid="uid://d1ppg486ujyho" path="res://Assets/Sounds/Entities/crickets.mp3" id="13_ndxmd"]
+[ext_resource type="Script" path="res://Scenes/Levels/cricket_sound.gd" id="14_vrw3u"]
+[ext_resource type="AudioStream" uid="uid://8eafdji5fwto" path="res://Assets/Sounds/Entities/raven.mp3" id="15_cwah7"]
+[ext_resource type="Script" path="res://Scenes/Levels/raven_sound.gd" id="16_anw3r"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -39,7 +45,7 @@ position = Vector2(940, 554)
 position = Vector2(508, 332)
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("3_55krn")]
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(1.3, 1.3)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
@@ -59,6 +65,20 @@ stream = ExtResource("9_xam88")
 bus = &"Sounds"
 script = ExtResource("10_kab1e")
 
+[node name="OwlSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pptxq")
+script = ExtResource("12_5dws7")
+
+[node name="CricketSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ndxmd")
+script = ExtResource("14_vrw3u")
+
+[node name="RavenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_cwah7")
+script = ExtResource("16_anw3r")
+
 [connection signal="finished" from="WindSound" to="WindSound" method="_on_finished"]
+[connection signal="finished" from="OwlSound" to="OwlSound" method="_on_finished"]
+[connection signal="finished" from="CricketSound" to="CricketSound" method="_on_finished"]
 
 [editable path="Player/PlayerCamera"]
