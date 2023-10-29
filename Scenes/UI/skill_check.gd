@@ -37,6 +37,8 @@ func check_skill(pile: Pile) -> void:
 	var pointer := int(center.rotation_degrees + rotation_degrees) % 360
 	if pointer < max_angle and pointer > min_angle:
 		pile.dig()
+		visible = false
+		await get_tree().create_timer(0.3).timeout
 		start()
 		if pile.digs_left <= 0:
 			set_physics_process(false)
