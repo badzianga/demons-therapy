@@ -2,13 +2,14 @@ extends Node2D
 
 const PileScene := preload("res://Scenes/Environment/pile.tscn")
 
-var pile_amount := 2
+const PILE_AMOUNTS: Array[int] = [0, 5, 10, 15]
 var spawned_treasure := false
 
 @onready var pile_locations: Node2D = $PileLocations
 
 
 func _ready() -> void:
+	var pile_amount := PILE_AMOUNTS[GameController.level]
 	var piles := pile_locations.get_children()
 	while (pile_amount > 0):
 		pile_amount -= 1
@@ -20,4 +21,3 @@ func _ready() -> void:
 			spawned_treasure = true
 			pile.has_treasure = true
 		add_child(pile)
-		print(pile)

@@ -1,7 +1,7 @@
 extends Node
 
-const LEVEL_HOURS: Array[int] =   [0, 4]
-const LEVEL_MINUTES: Array[int] = [0, 0]
+const LEVEL_HOURS: Array[int] =   [0, 4, 3, 1]
+const LEVEL_MINUTES: Array[int] = [0, 30, 0, 0]
 const MUSIC: Dictionary = {
 	"menu": preload("res://Assets/Music/menu_background.mp3"),
 	"therapy": preload("res://Assets/Music/elevator.mp3"),

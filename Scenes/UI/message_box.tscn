@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(390, -120)]
+"values": [Vector2(140, -120)]
 }
 
 [sub_resource type="Animation" id="Animation_5dcle"]
@@ -31,7 +31,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 2.5, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(390, -120), Vector2(390, 40), Vector2(390, 40), Vector2(390, -120)]
+"values": [Vector2(140, -120), Vector2(140, 40), Vector2(140, 40), Vector2(140, -120)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lxci3"]
@@ -41,13 +41,13 @@ _data = {
 }
 
 [node name="MessageBox" type="TextureRect"]
-custom_minimum_size = Vector2(500, 120)
+custom_minimum_size = Vector2(1000, 120)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -250.0
+offset_left = -500.0
 offset_top = -120.0
-offset_right = 378.0
+offset_right = 500.0
 grow_horizontal = 2
 texture = ExtResource("1_5f6y2")
 expand_mode = 1

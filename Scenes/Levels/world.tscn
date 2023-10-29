@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://bt42bketsexyd"]
+[gd_scene load_steps=12 format=3 uid="uid://bt42bketsexyd"]
 
-[ext_resource type="PackedScene" uid="uid://bkaohb4nhw0p1" path="res://Scenes/Levels/level_1.tscn" id="1_gv0fi"]
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_k464s"]
 [ext_resource type="PackedScene" uid="uid://ceegmqeonmn7f" path="res://Scenes/UI/hud.tscn" id="5_7ckks"]
 [ext_resource type="PackedScene" uid="uid://0luf8s1i3aey" path="res://Scenes/UI/pause.tscn" id="9_4k4nh"]
@@ -42,8 +41,6 @@ script = ExtResource("14_vrw3u")
 [node name="RavenSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_cwah7")
 script = ExtResource("16_anw3r")
-
-[node name="Level1" parent="." instance=ExtResource("1_gv0fi")]
 
 [connection signal="finished" from="WindSound" to="WindSound" method="_on_finished"]
 [connection signal="finished" from="OwlSound" to="OwlSound" method="_on_finished"]
