@@ -55,7 +55,10 @@ func go_to_caught() -> void:
 
 
 func go_to_world() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Levels/world.tscn")
+	if level < 4:
+		get_tree().change_scene_to_file("res://Scenes/Levels/world.tscn")
+	else:
+		go_to_menu()
 
 
 func go_to_therapy(state_name: String) -> void:
