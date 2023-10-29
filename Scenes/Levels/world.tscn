@@ -17,6 +17,7 @@ y_sort_enabled = true
 script = ExtResource("1_k464s")
 
 [node name="AmbientLight" type="DirectionalLight2D" parent="."]
+visible = false
 energy = 0.99
 blend_mode = 1
 
