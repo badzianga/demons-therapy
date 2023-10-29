@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0irhevhrck6j"]
+[gd_scene load_steps=7 format=3 uid="uid://d0irhevhrck6j"]
 
 [ext_resource type="Texture2D" uid="uid://bph33h7ydnp1w" path="res://Assets/UI/blank_sheet.png" id="1_x2un4"]
 [ext_resource type="Script" path="res://Scenes/DialogueSystem/dialogue_system.gd" id="2_jg3wb"]
+[ext_resource type="FontFile" uid="uid://bmgo0sogn71ne" path="res://Assets/Fonts/Horrors.ttf" id="3_0e8cq"]
 
 [sub_resource type="Animation" id="Animation_pnfj1"]
 length = 0.001
@@ -52,10 +53,11 @@ script = ExtResource("2_jg3wb")
 [node name="NameLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 84.0
-offset_top = 14.0
+offset_top = 24.0
 offset_right = 656.0
-offset_bottom = 70.0
+offset_bottom = 80.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_0e8cq")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Name"
@@ -67,6 +69,7 @@ offset_top = 70.0
 offset_right = 656.0
 offset_bottom = 174.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_0e8cq")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "Text"

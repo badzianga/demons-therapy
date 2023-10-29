@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://0luf8s1i3aey"]
+[gd_scene load_steps=4 format=3 uid="uid://0luf8s1i3aey"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause.gd" id="1_e8r77"]
+[ext_resource type="FontFile" uid="uid://bmgo0sogn71ne" path="res://Assets/Fonts/Horrors.ttf" id="2_q6i6g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blax7"]
 bg_color = Color(0.27451, 0.27451, 0.27451, 1)
@@ -50,6 +51,7 @@ custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_q6i6g")
 text = "Resume"
 
 [node name="MenuButton" type="Button" parent="Background/PauseContainer"]
@@ -57,6 +59,7 @@ custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_q6i6g")
 text = "Quit to menu"
 
 [node name="QuitButton" type="Button" parent="Background/PauseContainer"]
@@ -65,6 +68,7 @@ custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_q6i6g")
 text = "Quit to desktop"
 
 [node name="Margin" type="Control" parent="Background/PauseContainer"]
@@ -78,6 +82,7 @@ size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="Background/PauseContainer/AudioSettings"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_q6i6g")
 text = "Audio settings:"
 horizontal_alignment = 1
 
@@ -87,6 +92,7 @@ layout_mode = 2
 [node name="MusicLabel" type="Label" parent="Background/PauseContainer/AudioSettings/HBoxContainer"]
 custom_minimum_size = Vector2(64, 26)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_q6i6g")
 text = "Music: "
 
 [node name="MusicSlider" type="HSlider" parent="Background/PauseContainer/AudioSettings/HBoxContainer"]
@@ -101,6 +107,7 @@ layout_mode = 2
 [node name="SoundsLabel" type="Label" parent="Background/PauseContainer/AudioSettings/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 26)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_q6i6g")
 text = "Sounds:"
 
 [node name="SoundsSlider" type="HSlider" parent="Background/PauseContainer/AudioSettings/HBoxContainer2"]
