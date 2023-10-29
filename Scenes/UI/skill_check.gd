@@ -41,9 +41,9 @@ func check_skill(pile: Pile) -> void:
 		await get_tree().create_timer(0.3).timeout
 		start()
 		if pile.digs_left <= 0:
+			skill_checked.emit()
 			set_physics_process(false)
 			visible = false
-			skill_checked.emit()
 		print("skill checked!")
 	else:
 		set_physics_process(false)

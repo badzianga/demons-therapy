@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://vq0i68658o1u"]
+[gd_scene load_steps=17 format=3 uid="uid://vq0i68658o1u"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/demon.gd" id="1_2e0nd"]
 [ext_resource type="Texture2D" uid="uid://bx777db45qtb3" path="res://Assets/Entities/demon.png" id="1_xdmch"]
 [ext_resource type="Script" path="res://Scenes/AI/finite_state_machine.gd" id="2_mmi4f"]
 [ext_resource type="Script" path="res://Scenes/AI/wander_state.gd" id="4_yvyy4"]
+[ext_resource type="AudioStream" uid="uid://b7hu4dvb26npq" path="res://Assets/Sounds/Demon/hello_there.mp3" id="5_57cof"]
 [ext_resource type="Script" path="res://Scenes/AI/chase_state.gd" id="5_jh52n"]
 [ext_resource type="AudioStream" uid="uid://bt3x36uqt4hpj" path="res://Assets/Sounds/Background/demon_close.mp3" id="6_w51bl"]
 [ext_resource type="Script" path="res://Scenes/AI/look_around_state.gd" id="7_f0a6y"]
@@ -181,6 +182,10 @@ collision_mask = 2
 [node name="CollisionShape" type="CollisionShape2D" parent="CatchArea"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rnd2r")
+
+[node name="ScarySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_57cof")
+max_distance = 1000.0
 
 [connection signal="timeout" from="FiniteStateMachine/WanderState/WanderTimer" to="FiniteStateMachine/WanderState" method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="FiniteStateMachine/LookAroundState/LookAroundTimer" to="FiniteStateMachine/LookAroundState" method="_on_look_around_timer_timeout"]
