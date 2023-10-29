@@ -88,3 +88,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MessageBox" parent="." instance=ExtResource("4_v7d7s")]
+offset_left = 140.0
+offset_right = 1140.0

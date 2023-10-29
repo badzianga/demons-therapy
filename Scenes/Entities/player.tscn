@@ -29,7 +29,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_qlumr"]
 resource_name = "idle"
-length = 0.2
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -38,10 +38,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [11, 12]
 }
 
 [sub_resource type="Animation" id="Animation_ykd4o"]
@@ -148,7 +148,7 @@ script = ExtResource("1_j3w4g")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -54)
 texture = ExtResource("2_jq45s")
-hframes = 10
+hframes = 13
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
