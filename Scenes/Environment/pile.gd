@@ -5,9 +5,11 @@ const DugPileSprite := preload("res://Assets/Environment/pile_2.png")
 const SmokeParticlesScene := preload("res://Scenes/Entities/smoke_particles.tscn")
 
 var digs_left: int
+var has_treasure := false
 
 @onready var sprite := $Sprite
 @onready var dig_sound := $DigSound
+
 
 
 func _ready() -> void:
@@ -24,7 +26,6 @@ func dig() -> void:
 	if digs_left <= 0:
 		sprite.texture = DugPileSprite
 		$CollisionShape.set_deferred("disabled", true)
-	
 
 
 func _on_area_entered(_area: Area2D) -> void:

@@ -13,6 +13,8 @@ var sprinting := false
 var skill_checking := false
 var has_shovel := false
 var collides_with_box := false
+var has_treasure := false
+var theoretically_has_treasure := false
 
 var pile: Pile = null
 
@@ -20,12 +22,14 @@ var pile: Pile = null
 @onready var animation_player := $AnimationPlayer
 @onready var walk_sound := $WalkSound
 @onready var skill_check := $TopHead/SkillCheck as SkillCheck
+@onready var e_key := $TopHead/EKey
 
 
 func _ready() -> void:
 	GameController.player = self
 	skill_check.skill_checked.connect(_on_skill_checked)
 	skill_check.skill_failed.connect(_on_skill_failed)
+	e_key.visible = false
 
 
 func _physics_process(_delta: float) -> void:
@@ -90,28 +94,41 @@ func check_digging() -> void:
 			skill_check.start()
 			skill_checking = true
 		else:
-			skill_check.check_skill(pile)
+			if skill_check.visible:
+				skill_check.check_skill(pile)
 
 
 func _on_dig_area_area_entered(area: Area2D) -> void:
 	if area.name == "ShovelBoxArea":
 		collides_with_box = true
+		if not has_shovel and not has_treasure:
+			e_key.visible = true
 		return
 	pile = area
+	if has_shovel:
+		e_key.visible = true
 
 
 func _on_dig_area_area_exited(area: Area2D) -> void:
 	if area.name == "ShovelBoxArea":
 		collides_with_box = false
+		e_key.visible = false
 		return
+	theoretically_has_treasure = pile.has_treasure
 	pile = null
+	e_key.visible = false
 
 
 func _on_skill_checked() -> void:
+	has_treasure = theoretically_has_treasure
+	if has_treasure:
+		GameController.hud.set_icon("treasure")
 	skill_checking = false
+	e_key.visible = false
 
 
 func _on_skill_failed() -> void:
 	has_shovel = false
 	GameController.hud.set_icon("broken")
 	skill_checking = false
+	e_key.visible = false

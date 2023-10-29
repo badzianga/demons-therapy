@@ -4,7 +4,7 @@ extends CanvasLayer
 const ICONS := {
 	"broken": preload("res://Assets/UI/shovel_broken_ui.png"),
 	"shovel": preload("res://Assets/UI/shovel_ui.png"),
-	"gold": preload("res://Assets/UI/shovel_broken_ui.png")
+	"treasure": preload("res://Assets/UI/pouch.png")
 }
 
 @onready var time_label := $TimeLabel
