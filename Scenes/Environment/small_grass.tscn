@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://n32lrg0otnyx"]
+[gd_scene load_steps=3 format=3 uid="uid://n32lrg0otnyx"]
 
 [ext_resource type="Texture2D" uid="uid://domn8oie3cbwn" path="res://Assets/Environment/small_grass.png" id="1_s75ak"]
+[ext_resource type="Script" path="res://Scenes/Environment/small_grass.gd" id="2_at56d"]
 
 [node name="SmallGrass" type="Sprite2D"]
 texture = ExtResource("1_s75ak")
+hframes = 5
+script = ExtResource("2_at56d")
