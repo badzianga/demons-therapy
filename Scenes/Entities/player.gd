@@ -23,6 +23,8 @@ var pile: Pile = null
 @onready var walk_sound := $WalkSound
 @onready var skill_check := $TopHead/SkillCheck as SkillCheck
 @onready var e_key := $TopHead/EKey
+@onready var pick_sound := $PickSound
+@onready var camera := $PlayerCamera
 
 
 func _ready() -> void:
@@ -32,12 +34,13 @@ func _ready() -> void:
 	e_key.visible = false
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	check_digging()
 	if not skill_checking:
 		handle_movement()
 	handle_animations()
 	GameController.set_stamina(stamina)
+	handle_camera(delta)
 
 
 func handle_movement() -> void:
@@ -84,6 +87,13 @@ func handle_animations() -> void:
 	sprite.flip_h = (direction.x < 0)
 
 
+func handle_camera(delta: float) -> void:
+	if sprinting:
+		camera.zoom = camera.zoom.move_toward(Vector2(1.1, 1.1), 0.45 * delta)
+	else:
+		camera.zoom = camera.zoom.move_toward(Vector2(1.3, 1.3), 0.45 * delta)
+
+
 func check_digging() -> void:
 	if Input.is_action_just_pressed("dig") and collides_with_box:
 		has_shovel = true
@@ -99,6 +109,8 @@ func check_digging() -> void:
 
 
 func _on_dig_area_area_entered(area: Area2D) -> void:
+	if has_treasure:
+		return
 	if area.name == "ShovelBoxArea":
 		collides_with_box = true
 		if not has_shovel and not has_treasure:
@@ -114,7 +126,8 @@ func _on_dig_area_area_exited(area: Area2D) -> void:
 		collides_with_box = false
 		e_key.visible = false
 		return
-	theoretically_has_treasure = pile.has_treasure
+	if pile:
+		theoretically_has_treasure = pile.has_treasure
 	pile = null
 	e_key.visible = false
 
@@ -123,6 +136,8 @@ func _on_skill_checked() -> void:
 	has_treasure = theoretically_has_treasure
 	if has_treasure:
 		GameController.hud.set_icon("treasure")
+		has_shovel = false
+		pick_sound.play()
 	skill_checking = false
 	e_key.visible = false
 

@@ -31,7 +31,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	vision.target_position =  GameController.player.global_position - global_position
 	
-	if randf() < 0.05 and not scary_sound.playing:
+	if not scary_sound.playing and randf() < 0.02:
 		if randf() > 0.01:
 			scary_sound.stream = SOUNDS[randi_range(0, 2)]
 			scary_sound.volume_db = 0.0

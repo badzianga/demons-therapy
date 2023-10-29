@@ -29,7 +29,8 @@ func dig() -> void:
 
 
 func _on_area_entered(_area: Area2D) -> void:
-	sprite.material.set_shader_parameter("width", 2.0)
+	if not GameController.player.has_treasure:
+		sprite.material.set_shader_parameter("width", 2.0)
 
 
 func _on_area_exited(_area: Area2D) -> void:
