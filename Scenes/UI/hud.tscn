@@ -70,13 +70,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -132.0
-offset_top = -104.0
-offset_right = -9.0
-offset_bottom = 53.0001
+offset_left = -161.0
+offset_top = -184.0
+offset_right = -38.0
+offset_bottom = -26.9999
 grow_horizontal = 0
 grow_vertical = 0
-rotation = -0.404916
 texture = ExtResource("3_u7di1")
 
 [node name="IconSprite" type="TextureRect" parent="IconBorder"]

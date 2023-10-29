@@ -26,6 +26,7 @@ var pile: Pile = null
 @onready var pick_sound := $PickSound
 @onready var camera := $PlayerCamera
 @onready var breathing_sound: AudioStreamPlayer = $BreathingSound
+@onready var heart_sound: AudioStreamPlayer = $HeartSound
 
 
 func _ready() -> void:
@@ -45,6 +46,10 @@ func _physics_process(delta: float) -> void:
 	
 	if stamina_depleted and not breathing_sound.playing:
 		breathing_sound.play()
+
+
+func heartbeat() -> void:
+	heart_sound.play()
 
 
 func handle_movement() -> void:

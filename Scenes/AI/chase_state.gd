@@ -22,6 +22,7 @@ func enter_state() -> void:
 func exit_state() -> void:
 	print("Exited state: ", name)
 	set_physics_process(false)
+	GameController.player.heartbeat()
 
 
 func _physics_process(_delta: float) -> void:
