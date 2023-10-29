@@ -101,6 +101,6 @@ func set_ambient_light() -> void:
 	if hour < 4:  # from 24:00 to 4:00 
 		return
 	elif hour < 5:  # from 4:00 to 5:00
-		ambient_light.energy = 0.9 - 0.2 * (minute / 60.0)
+		ambient_light.energy = 0.99 - 0.1 * (minute / 60.0)
 	else:  # from 5:00 to 6:00
-		ambient_light.energy = 0.7 - 0.3 * (minute / 60.0)
+		ambient_light.energy = 0.89 - 0.2 * (minute / 60.0)

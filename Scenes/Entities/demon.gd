@@ -48,7 +48,7 @@ func _physics_process(_delta: float) -> void:
 	if not scary_sound.playing and randf() < 0.02:
 		if randf() > 0.01:
 			scary_sound.stream = SOUNDS[randi_range(0, 2)]
-			scary_sound.volume_db = 0.0
+			scary_sound.volume_db = 5.0
 		else:
 			scary_sound.stream = SOUNDS[3]
 			scary_sound.volume_db = 20.0

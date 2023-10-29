@@ -17,7 +17,7 @@ y_sort_enabled = true
 script = ExtResource("1_k464s")
 
 [node name="AmbientLight" type="DirectionalLight2D" parent="."]
-energy = 0.9
+energy = 0.99
 blend_mode = 1
 
 [node name="HUD" parent="." instance=ExtResource("5_7ckks")]
@@ -27,6 +27,7 @@ visible = false
 
 [node name="WindSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_xam88")
+volume_db = 4.0
 bus = &"Sounds"
 script = ExtResource("10_kab1e")
 
@@ -36,6 +37,7 @@ script = ExtResource("12_5dws7")
 
 [node name="CricketSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ndxmd")
+volume_db = -3.0
 script = ExtResource("14_vrw3u")
 
 [node name="RavenSound" type="AudioStreamPlayer" parent="."]
