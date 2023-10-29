@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0exx5ftanscx"]
+[gd_scene load_steps=17 format=3 uid="uid://b0exx5ftanscx"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="1_17c3d"]
 [ext_resource type="Texture2D" uid="uid://cbkia1ok3hpvp" path="res://Assets/Environment/bg_grass.png" id="1_ig5y3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://oer4uvjwo2vj" path="res://Scenes/Environment/tree2.tscn" id="6_qnny2"]
 [ext_resource type="PackedScene" uid="uid://n32lrg0otnyx" path="res://Scenes/Environment/small_grass.tscn" id="7_wf07q"]
 [ext_resource type="PackedScene" uid="uid://bvds4lp08mkv0" path="res://Scenes/Environment/sign.tscn" id="8_6nxpp"]
+[ext_resource type="PackedScene" uid="uid://j52e24vem5ct" path="res://Scenes/Environment/pile.tscn" id="10_pux81"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63664"]
 texture = ExtResource("1_ig5y3")
@@ -197,6 +198,9 @@ shape = SubResource("WorldBoundaryShape2D_7rdj4")
 [node name="BottomRightY" type="CollisionShape2D" parent="WorldBoundaries"]
 position = Vector2(2050, 1130)
 shape = SubResource("WorldBoundaryShape2D_rtfuv")
+
+[node name="Pile" parent="." instance=ExtResource("10_pux81")]
+position = Vector2(762, 555)
 
 [node name="PileLocations" type="Node2D" parent="."]
 

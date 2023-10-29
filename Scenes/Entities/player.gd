@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+const SkillCheckScene := preload("res://Scenes/UI/skill_check.tscn")
+
 @export var speed := 175.0
 @export var sprint_factor := 1.75
 
@@ -8,23 +10,28 @@ var direction := Vector2.ZERO
 var stamina := 100
 var stamina_depleted := false
 var sprinting := false
+var skill_checking := false
 
 var pile: Pile = null
 
 @onready var sprite := $Sprite
 @onready var animation_player := $AnimationPlayer
 @onready var walk_sound := $WalkSound
+@onready var skill_check := $TopHead/SkillCheck as SkillCheck
 
 
 func _ready() -> void:
 	GameController.player = self
+	skill_check.skill_checked.connect(_on_skill_checked)
+	skill_check.skill_failed.connect(_on_skill_failed)
 
 
 func _physics_process(_delta: float) -> void:
-	handle_movement()
+	check_digging()
+	if not skill_checking:
+		handle_movement()
 	handle_animations()
 	GameController.set_stamina(stamina)
-	check_digging()
 
 
 func handle_movement() -> void:
@@ -70,7 +77,12 @@ func handle_animations() -> void:
 
 func check_digging() -> void:
 	if Input.is_action_just_pressed("dig") and pile != null:
-		pile.dig()
+		direction = Vector2.ZERO
+		if not skill_checking:
+			skill_check.start()
+			skill_checking = true
+		else:
+			skill_check.check_skill(pile)
 
 
 func _on_dig_area_area_entered(area: Pile) -> void:
@@ -79,3 +91,11 @@ func _on_dig_area_area_entered(area: Pile) -> void:
 
 func _on_dig_area_area_exited(_area: Pile) -> void:
 	pile = null
+
+
+func _on_skill_checked() -> void:
+	skill_checking = false
+
+
+func _on_skill_failed() -> void:
+	skill_checking = false

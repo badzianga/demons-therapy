@@ -1,9 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceegmqeonmn7f"]
+[gd_scene load_steps=5 format=3 uid="uid://ceegmqeonmn7f"]
 
 [ext_resource type="Script" path="res://Scenes/UI/hud.gd" id="1_ygdsp"]
+[ext_resource type="Texture2D" uid="uid://bph33h7ydnp1w" path="res://Assets/UI/blank_sheet.png" id="2_vr26b"]
+[ext_resource type="Texture2D" uid="uid://725p3dn775ty" path="res://Assets/UI/card_UI.png" id="3_u7di1"]
+[ext_resource type="Texture2D" uid="uid://cnokkur6rck7m" path="res://Assets/UI/shovel_ui.png" id="4_p82na"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ygdsp")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_top = 36.0
+offset_right = -12.0
+offset_bottom = 143.0
+grow_horizontal = 0
+texture = ExtResource("2_vr26b")
+expand_mode = 1
 
 [node name="TimeLabel" type="Label" parent="."]
 anchors_preset = 1
@@ -14,14 +29,25 @@ offset_top = 40.0
 offset_right = -40.0
 offset_bottom = 63.0
 grow_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
 text = "00:00"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 128.0
+texture = ExtResource("2_vr26b")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="."]
 offset_left = 40.0
 offset_top = 40.0
 offset_right = 169.0
 offset_bottom = 88.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
 text = "Stamina"
 
@@ -33,3 +59,31 @@ offset_bottom = 107.0
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[node name="ShovelBorder" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -245.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_u7di1")
+
+[node name="Shovel" type="TextureRect" parent="ShovelBorder"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_p82na")

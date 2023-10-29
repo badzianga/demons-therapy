@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6at1hqybuybx"]
+[gd_scene load_steps=6 format=3 uid="uid://b6at1hqybuybx"]
 
 [ext_resource type="Texture2D" uid="uid://dwleofwj2te3c" path="res://Assets/Entities/smoke.png" id="1_mihp6"]
+[ext_resource type="Script" path="res://Scenes/Entities/smoke_particles.gd" id="2_whej3"]
 
 [sub_resource type="Gradient" id="Gradient_w13y4"]
 offsets = PackedFloat32Array(0, 0.644444, 0.881481)
@@ -30,3 +31,4 @@ process_material = SubResource("ParticleProcessMaterial_bs4v3")
 texture = ExtResource("1_mihp6")
 one_shot = true
 explosiveness = 0.8
+script = ExtResource("2_whej3")

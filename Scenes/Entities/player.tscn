@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvg0sjg6fcdar"]
+[gd_scene load_steps=14 format=3 uid="uid://cvg0sjg6fcdar"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_j3w4g"]
 [ext_resource type="Texture2D" uid="uid://bnrldjjwa7mvu" path="res://Assets/Entities/player.png" id="2_jq45s"]
 [ext_resource type="AudioStream" uid="uid://cgqnjuuixynbl" path="res://Assets/Sounds/Player/grass_sound.mp3" id="3_i3hgc"]
+[ext_resource type="PackedScene" uid="uid://co6fboesikcmy" path="res://Scenes/UI/skill_check.tscn" id="4_8vgg0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djfv7"]
 radius = 8.99999
@@ -130,6 +131,14 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DigArea"]
 shape = SubResource("CircleShape2D_6wsmt")
+
+[node name="TopHead" type="Marker2D" parent="."]
+position = Vector2(0, -159)
+
+[node name="EKey" type="Sprite2D" parent="TopHead"]
+
+[node name="SkillCheck" parent="TopHead" instance=ExtResource("4_8vgg0")]
+top_level = false
 
 [connection signal="area_entered" from="DigArea" to="." method="_on_dig_area_area_entered"]
 [connection signal="area_exited" from="DigArea" to="." method="_on_dig_area_area_exited"]

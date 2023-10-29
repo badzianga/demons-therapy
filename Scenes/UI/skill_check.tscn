@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://co6fboesikcmy"]
+
+[ext_resource type="Texture2D" uid="uid://bggxttq1u4q45" path="res://Assets/UI/skill_check.png" id="1_7wi62"]
+[ext_resource type="Script" path="res://Scenes/UI/skill_check.gd" id="2_qrfii"]
+[ext_resource type="Texture2D" uid="uid://c34ou3q6f73q5" path="res://Assets/UI/skill_arrow.png" id="3_tn0tx"]
+
+[sub_resource type="Gradient" id="Gradient_bxflg"]
+offsets = PackedFloat32Array(0, 0.8)
+colors = PackedColorArray(1, 1, 1, 1, 0.083871, 0.083871, 0.083871, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbbp3"]
+gradient = SubResource("Gradient_bxflg")
+width = 8
+height = 16
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="SkillCheck" type="Sprite2D"]
+top_level = true
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_7wi62")
+script = ExtResource("2_qrfii")
+
+[node name="Center" type="Marker2D" parent="."]
+
+[node name="Indicator" type="Sprite2D" parent="Center"]
+position = Vector2(0, 24)
+texture = ExtResource("3_tn0tx")
+
+[node name="Light" type="PointLight2D" parent="Center/Indicator"]
+color = Color(1, 0, 0, 1)
+texture = SubResource("GradientTexture2D_nbbp3")
