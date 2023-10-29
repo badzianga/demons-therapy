@@ -13,7 +13,7 @@ var sprinting := false
 var skill_checking := false
 var has_shovel := false
 var collides_with_box := false
-var has_treasure := true # todo
+var has_treasure := false
 var theoretically_has_treasure := false
 
 var pile: Pile = null
