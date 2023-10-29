@@ -49,7 +49,8 @@ func _physics_process(delta: float) -> void:
 
 
 func heartbeat() -> void:
-	heart_sound.play()
+	if not heart_sound.playing:
+		heart_sound.play()
 
 
 func handle_movement() -> void:
