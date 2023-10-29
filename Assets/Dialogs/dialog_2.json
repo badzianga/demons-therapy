@@ -1,8 +1,8 @@
 [
     {"Name": "Therapist", "Text": "Let me interrupt your story.", "Image": "bieda_ui_3.png"},
     {"Name": "Therapist", "Text": "So he made it all out, just by hiding behind the bushes and trees?", "Image": "bieda_ui_3.png"},
-    {"Name": "Bieda", "Text": "Yes... I feel ashamed, However, I was a little bit sleepy.", "Image": "bieda_ui_2.png"},
-    {"Name": "Bieda", "Text": "The next day, I started looking behind them.", "Image": "bieda_ui_1.png"},
+    {"Name": "Bieda", "Text": "Yes... I feel ashamed, However, I was a little bit sleepy. Yes yes.", "Image": "bieda_ui_2.png"},
+    {"Name": "Bieda", "Text": "The next day, I hid his gold again but, I started looking behind the obstacles.", "Image": "bieda_ui_1.png"},
     {"Name": "Bieda", "Text": "You know, I can pass through objects.", "Image": "bieda_ui_1.png"},
     {"Name": "Therapist", "Text": "How did it go? Tell me about it.", "Image": "bieda_ui_3.png"}
 ]

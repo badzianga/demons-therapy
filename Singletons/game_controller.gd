@@ -20,6 +20,7 @@ var player: Player
 
 @onready var timer := $Timer
 @onready var music_player := $MusicPlayer
+@onready var skip_timer: Timer = $SkipTimer
 
 
 func _ready() -> void:
@@ -31,6 +32,7 @@ func reset_game() -> void:
 	hour = 0
 	minute = 0
 	timer.stop()
+	skip_timer.stop()
 
 
 func play_music(type: String) -> void:
@@ -44,11 +46,13 @@ func start_game() -> void:
 
 
 func go_to_menu() -> void:
+	skip_timer.stop()
 	get_tree().change_scene_to_file("res://Scenes/UI/menu.tscn")
 	reset_game()
 
 
 func go_to_caught() -> void:
+	skip_timer.stop()
 	timer.stop()
 	music_player.stop()
 	get_tree().change_scene_to_file("res://Scenes/Levels/black_screen.tscn")
@@ -62,6 +66,7 @@ func go_to_world() -> void:
 
 
 func go_to_therapy(state_name: String) -> void:
+	skip_timer.stop()
 	timer.stop()
 	level_completion_state = state_name
 	if state_name == "complete":
@@ -107,3 +112,8 @@ func set_ambient_light() -> void:
 		ambient_light.energy = 0.99 - 0.1 * (minute / 60.0)
 	else:  # from 5:00 to 6:00
 		ambient_light.energy = 0.89 - 0.2 * (minute / 60.0)
+
+
+func _on_skip_timer_timeout() -> void:
+	hour = 5
+	minute = 59

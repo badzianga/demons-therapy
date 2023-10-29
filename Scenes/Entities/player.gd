@@ -152,6 +152,7 @@ func _on_skill_checked() -> void:
 		has_shovel = false
 		pick_sound.play()
 		GameController.hud.message_box.display("found")
+		GameController.skip_timer.start()
 	skill_checking = false
 	e_key.visible = false
 

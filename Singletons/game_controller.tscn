@@ -10,4 +10,9 @@ script = ExtResource("1_vjir3")
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
 
+[node name="SkipTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_level_timer_timeout"]
+[connection signal="timeout" from="SkipTimer" to="." method="_on_skip_timer_timeout"]

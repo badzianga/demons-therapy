@@ -2,7 +2,7 @@ extends Node2D
 
 const PileScene := preload("res://Scenes/Environment/pile.tscn")
 
-const PILE_AMOUNTS: Array[int] = [0, 5, 10, 15]
+const PILE_AMOUNTS: Array[int] = [0, 3, 7, 12]
 var spawned_treasure := false
 
 @onready var pile_locations: Node2D = $PileLocations
