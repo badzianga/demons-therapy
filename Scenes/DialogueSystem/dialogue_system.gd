@@ -20,8 +20,12 @@ var _finished := false
 
 func _ready() -> void:
 	$Timer.wait_time = _text_speed
-	_dialog = _get_dialog()
+	#_dialog = _get_dialog()
 	#_next_phrase()
+
+
+func load_dialog() -> void:
+	_dialog = _get_dialog()
 
 
 func _process(_delta: float) -> void:

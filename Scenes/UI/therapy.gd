@@ -5,11 +5,14 @@ extends Control
 
 
 func _ready() -> void:
-	print("Start of the therapy number ", GameController.level)
 	dialogue_system.image_changed.connect(_on_image_changed)
 	dialogue_system.dialog_finished.connect(_on_dialog_finished)
 	dialogue_system.actor_changed.connect(_on_actor_changed)
-	dialogue_system.dialog_path = "res://Assets/Dialogs/dialog_" + str(GameController.level) + ".json"
+	if GameController.level_completion_state == "complete" or GameController.level_completion_state == null:
+		dialogue_system.dialog_path = "res://Assets/Dialogs/dialog_" + str(GameController.level) + ".json"
+	else:
+		dialogue_system.dialog_path = "res://Assets/Dialogs/dialog_" + GameController.level_completion_state + ".json"
+	dialogue_system.load_dialog()
 	dialogue_system._next_phrase()
 
 

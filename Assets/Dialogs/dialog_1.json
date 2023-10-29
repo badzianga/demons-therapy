@@ -1,7 +1,14 @@
 [
-    {"Name": "Therapist", "Text": "Let me interrupt your story.", "Image": "bieda_ui_3.png"},
-    {"Name": "Therapist", "Text": "So he made it all out, just by hiding behind the bushes and trees?", "Image": "bieda_ui_3.png"},
-    {"Name": "Bieda", "Text": "Yes...I feel ashamed, However, I was a little bit sleepy.", "Image": "bieda_ui_2.png"},
-    {"Name": "Bieda", "Text": "The next day, I started looking behind them.", "Image": "bieda_ui_1.png"},
-    {"Name": "Therapist", "Text": "How did it go? Tell me about it.", "Image": "bieda_ui_3.png"}
+	{"Name": "Therapist", "Text": "What brings you to me?", "Image": "bieda_ui_3.png"},
+	{"Name": "Bieda", "Text": "I can't take it anymore! I suffer from insomnia and my hair is falling out.", "Image": "bieda_ui_4.png"},
+	{"Name": "Therapist", "Text": "Don't you think, It's because you're getting older?", "Image": "bieda_ui_3.png"},
+	{"Name": "Bieda", "Text": "No! It all has started since I took money from that local guy 1100 years ago.", "Image": "bieda_ui_1.png"},
+	{"Name": "Bieda", "Text": "He has started coming to my place with shovels and digged it all out to find his pouch.", "Image": "bieda_ui_2.png"},
+	{"Name": "Therapist", "Text": "And how did you feel about it?", "Image": "bieda_ui_3.png"},
+	{"Name": "Bieda", "Text": "Well, I didn't like it. But, I thought at first: 'I might feed myself with his fear'. ", "Image": "bieda_ui_1.png"},
+	{"Name": "Therapist", "Text": "Don't you think that's a bit cruel?", "Image": "bieda_ui_3.png"},
+	{"Name": "Bieda", "Text": "It is my job to make them fear, poor and bring misfortune.", "Image": "bieda_ui_2.png"},
+	{"Name": "Therapist", "Text": "Sure, just remember to pay me after our session...", "Image": "bieda_ui_3.png"},
+	{"Name": "Therapist", "Text": "Anyway, let's start from beginning.", "Image": "bieda_ui_3.png"},
+	{"Name": "Therapist", "Text": "Tell me about your first time meeting him...", "Image": "bieda_ui_3.png"}
 ]

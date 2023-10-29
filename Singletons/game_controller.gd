@@ -11,7 +11,7 @@ const MUSIC: Dictionary = {
 var level := 0
 var hour := 0
 var minute := 0
-var level_completion_state: String
+var level_completion_state := "complete"
 
 # set outside this script
 var ambient_light: DirectionalLight2D
@@ -40,7 +40,7 @@ func play_music(type: String) -> void:
 
 func start_game() -> void:
 	print("I GO TO THERAPYYYYY")
-	get_tree().change_scene_to_file("res://Scenes/UI/therapy.tscn")
+	go_to_therapy("complete")
 
 
 func go_to_menu() -> void:
@@ -59,12 +59,14 @@ func go_to_world() -> void:
 
 
 func go_to_therapy(state_name: String) -> void:
+	timer.stop()
 	level_completion_state = state_name
+	if state_name == "complete":
+		level += 1
 	get_tree().change_scene_to_file("res://Scenes/UI/therapy.tscn")
 
 
 func start_level() -> void:
-	level += 1
 	hour = LEVEL_HOURS[level]
 	minute = LEVEL_MINUTES[level]
 	timer.start()
@@ -88,6 +90,10 @@ func _on_level_timer_timeout() -> void:
 		if hour == 6:
 			print("Time end")
 			timer.stop()
+			if player.has_treasure:
+				go_to_therapy("complete")
+			else:
+				go_to_therapy("timeout")
 	hud.set_time(hour, minute)
 
 
