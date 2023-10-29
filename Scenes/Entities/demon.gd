@@ -16,16 +16,30 @@ var player_in_detection_area := false
 @onready var chase_state := $FiniteStateMachine/ChaseState as ChaseState
 @onready var look_around_state := $FiniteStateMachine/LookAroundState as LookAroundState
 @onready var scary_sound := $ScarySound
+@onready var check_state := $FiniteStateMachine/CheckState as CheckState
 
 
 func _ready() -> void:
-	wander_state.player_seen.connect(fsm.change_state.bind(chase_state))
-	wander_state.path_finished.connect(fsm.change_state.bind(look_around_state))
+	if GameController.level == 1:
+		wander_state.player_seen.connect(fsm.change_state.bind(chase_state))
+		wander_state.path_finished.connect(fsm.change_state.bind(look_around_state))
+		
+		look_around_state.player_seen.connect(fsm.change_state.bind(chase_state))
+		look_around_state.looking_around_finished.connect(fsm.change_state.bind(wander_state))
+		
+		chase_state.player_lost.connect(fsm.change_state.bind(look_around_state))
 	
-	look_around_state.player_seen.connect(fsm.change_state.bind(chase_state))
-	look_around_state.looking_around_finished.connect(fsm.change_state.bind(wander_state))
-	
-	chase_state.player_lost.connect(fsm.change_state.bind(look_around_state))
+	elif GameController.level > 1:
+		wander_state.player_seen.connect(fsm.change_state.bind(chase_state))
+		wander_state.path_finished.connect(fsm.change_state.bind(look_around_state))
+		
+		look_around_state.player_seen.connect(fsm.change_state.bind(chase_state))
+		look_around_state.looking_around_finished.connect(fsm.change_state.bind(check_state))
+		
+		chase_state.player_lost.connect(fsm.change_state.bind(look_around_state))
+		
+		check_state.player_found.connect(fsm.change_state.bind(chase_state))
+		check_state.player_lost.connect(fsm.change_state.bind(wander_state))
 
 
 func _physics_process(_delta: float) -> void:

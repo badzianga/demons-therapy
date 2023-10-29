@@ -5,6 +5,7 @@ extends Control
 
 
 func _ready() -> void:
+	GameController.play_music("therapy")
 	dialogue_system.image_changed.connect(_on_image_changed)
 	dialogue_system.dialog_finished.connect(_on_dialog_finished)
 	dialogue_system.actor_changed.connect(_on_actor_changed)

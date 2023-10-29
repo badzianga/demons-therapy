@@ -7,13 +7,13 @@ const SkillCheckScene := preload("res://Scenes/UI/skill_check.tscn")
 @export var sprint_factor := 1.75
 
 var direction := Vector2.ZERO
-var stamina := 100
+var stamina := 100.0
 var stamina_depleted := false
 var sprinting := false
 var skill_checking := false
 var has_shovel := false
 var collides_with_box := false
-var has_treasure := false
+var has_treasure := true # todo
 var theoretically_has_treasure := false
 
 var pile: Pile = null
@@ -25,6 +25,7 @@ var pile: Pile = null
 @onready var e_key := $TopHead/EKey
 @onready var pick_sound := $PickSound
 @onready var camera := $PlayerCamera
+@onready var breathing_sound: AudioStreamPlayer = $BreathingSound
 
 
 func _ready() -> void:
@@ -39,8 +40,11 @@ func _physics_process(delta: float) -> void:
 	if not skill_checking:
 		handle_movement()
 	handle_animations()
-	GameController.set_stamina(stamina)
+	GameController.set_stamina(int(stamina))
 	handle_camera(delta)
+	
+	if stamina_depleted and not breathing_sound.playing:
+		breathing_sound.play()
 
 
 func handle_movement() -> void:
@@ -51,8 +55,8 @@ func handle_movement() -> void:
 		if Input.is_action_pressed("sprint") and not stamina_depleted:
 			sprinting = true
 			velocity = direction.normalized() * speed * sprint_factor
-			stamina -= 2
-			if stamina < 0:
+			stamina -= 1.0
+			if stamina <= 0.0:
 				stamina_depleted = true
 		else:
 			sprinting = false
@@ -67,8 +71,11 @@ func handle_movement() -> void:
 	else:
 		velocity = Vector2.ZERO
 	
-	stamina = min(stamina + 1, 100)
-	if stamina_depleted and stamina == 100:
+	if sprinting:
+		stamina = min(stamina + 0.5, 100.0)
+	else:
+		stamina = min(stamina + 0.25, 100.0)
+	if stamina_depleted and stamina == 100.0:
 		stamina_depleted = false
 
 	move_and_slide()

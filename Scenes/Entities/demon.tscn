@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vq0i68658o1u"]
+[gd_scene load_steps=18 format=3 uid="uid://vq0i68658o1u"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/demon.gd" id="1_2e0nd"]
 [ext_resource type="Texture2D" uid="uid://bx777db45qtb3" path="res://Assets/Entities/demon.png" id="1_xdmch"]
@@ -8,10 +8,11 @@
 [ext_resource type="Script" path="res://Scenes/AI/chase_state.gd" id="5_jh52n"]
 [ext_resource type="AudioStream" uid="uid://bt3x36uqt4hpj" path="res://Assets/Sounds/Background/demon_close.mp3" id="6_w51bl"]
 [ext_resource type="Script" path="res://Scenes/AI/look_around_state.gd" id="7_f0a6y"]
+[ext_resource type="Script" path="res://Scenes/AI/check_state.gd" id="8_pog61"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvyom"]
 radius = 26.0
-height = 128.0
+height = 72.0
 
 [sub_resource type="Animation" id="Animation_2gllq"]
 length = 0.001
@@ -153,17 +154,27 @@ demon_close_sound = NodePath("DemonCloseSound")
 [node name="DemonCloseSound" type="AudioStreamPlayer" parent="FiniteStateMachine/ChaseState"]
 stream = ExtResource("6_w51bl")
 
-[node name="LookAroundState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "vision", "look_around_timer")]
+[node name="LookAroundState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "vision", "look_around_timer", "player_detection_area")]
 script = ExtResource("7_f0a6y")
 actor = NodePath("../..")
 sprite = NodePath("../../Sprite")
 animator = NodePath("../../AnimationPlayer")
 vision = NodePath("../../Vision")
 look_around_timer = NodePath("LookAroundTimer")
+player_detection_area = NodePath("../../PlayerDetectionArea")
 
 [node name="LookAroundTimer" type="Timer" parent="FiniteStateMachine/LookAroundState"]
 wait_time = 1.5
 one_shot = true
+
+[node name="CheckState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "collision_shape", "vision")]
+script = ExtResource("8_pog61")
+actor = NodePath("../..")
+sprite = NodePath("../../Sprite")
+animator = NodePath("../../AnimationPlayer")
+speed = 100.0
+collision_shape = NodePath("../../CollisionShape")
+vision = NodePath("../../Vision")
 
 [node name="Vision" type="RayCast2D" parent="."]
 target_position = Vector2(192, 0)
@@ -186,6 +197,15 @@ shape = SubResource("CapsuleShape2D_rnd2r")
 [node name="ScarySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_57cof")
 max_distance = 1000.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 200.0
+target_desired_distance = 100.0
+path_max_distance = 1000.0
+path_postprocessing = 1
+avoidance_enabled = true
+neighbor_distance = 200.0
+max_neighbors = 5
 
 [connection signal="timeout" from="FiniteStateMachine/WanderState/WanderTimer" to="FiniteStateMachine/WanderState" method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="FiniteStateMachine/LookAroundState/LookAroundTimer" to="FiniteStateMachine/LookAroundState" method="_on_look_around_timer_timeout"]

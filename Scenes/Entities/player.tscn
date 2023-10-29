@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvg0sjg6fcdar"]
+[gd_scene load_steps=20 format=3 uid="uid://cvg0sjg6fcdar"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_j3w4g"]
 [ext_resource type="Texture2D" uid="uid://bnrldjjwa7mvu" path="res://Assets/Entities/player.png" id="2_jq45s"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://co6fboesikcmy" path="res://Scenes/UI/skill_check.tscn" id="4_8vgg0"]
 [ext_resource type="Texture2D" uid="uid://g3svpcuc2fkh" path="res://Assets/UI/e_key.png" id="4_hhps6"]
 [ext_resource type="AudioStream" uid="uid://cvh4wge32w5fb" path="res://Assets/Sounds/Player/pickup_item.mp3" id="6_naega"]
+[ext_resource type="AudioStream" uid="uid://b764ojmmxgq3r" path="res://Assets/Sounds/Player/stressed_breathing.mp3" id="7_3813x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djfv7"]
 radius = 8.99999
@@ -192,6 +193,9 @@ top_level = false
 
 [node name="PickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_naega")
+
+[node name="BreathingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3813x")
 
 [connection signal="area_entered" from="DigArea" to="." method="_on_dig_area_area_entered"]
 [connection signal="area_exited" from="DigArea" to="." method="_on_dig_area_area_exited"]

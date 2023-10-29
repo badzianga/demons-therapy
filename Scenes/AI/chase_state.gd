@@ -34,4 +34,3 @@ func _physics_process(_delta: float) -> void:
 	
 	if vision.is_colliding():
 		player_lost.emit()
-
