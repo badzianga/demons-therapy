@@ -52,7 +52,10 @@ func handle_movement() -> void:
 			velocity = direction.normalized() * speed
 		
 		if not walk_sound.playing:
-			walk_sound.pitch_scale = randf_range(0.85, 1.15)
+			if sprinting:
+				walk_sound.pitch_scale = randf_range(1.15, 1.45)
+			else:
+				walk_sound.pitch_scale = randf_range(0.85, 1.15)
 			walk_sound.play()
 	else:
 		velocity = Vector2.ZERO

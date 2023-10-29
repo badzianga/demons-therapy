@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://vq0i68658o1u"]
+[gd_scene load_steps=16 format=3 uid="uid://vq0i68658o1u"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/demon.gd" id="1_2e0nd"]
 [ext_resource type="Texture2D" uid="uid://bx777db45qtb3" path="res://Assets/Entities/demon.png" id="1_xdmch"]
 [ext_resource type="Script" path="res://Scenes/AI/finite_state_machine.gd" id="2_mmi4f"]
 [ext_resource type="Script" path="res://Scenes/AI/wander_state.gd" id="4_yvyy4"]
-[ext_resource type="AudioStream" uid="uid://b7hu4dvb26npq" path="res://Assets/Sounds/Demon/hello_there.mp3" id="5_57cof"]
 [ext_resource type="Script" path="res://Scenes/AI/chase_state.gd" id="5_jh52n"]
+[ext_resource type="AudioStream" uid="uid://bt3x36uqt4hpj" path="res://Assets/Sounds/Background/demon_close.mp3" id="6_w51bl"]
 [ext_resource type="Script" path="res://Scenes/AI/look_around_state.gd" id="7_f0a6y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvyom"]
@@ -102,6 +102,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_xyucv"]
 radius = 320.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rnd2r"]
+radius = 30.0
+height = 134.0
+
 [node name="Demon" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
@@ -137,18 +141,16 @@ wander_timer = NodePath("WanderTimer")
 [node name="WanderTimer" type="Timer" parent="FiniteStateMachine/WanderState"]
 one_shot = true
 
-[node name="ChaseState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "vision", "hello_there_sound")]
+[node name="ChaseState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "vision", "demon_close_sound")]
 script = ExtResource("5_jh52n")
 actor = NodePath("../..")
 sprite = NodePath("../../Sprite")
 animator = NodePath("../../AnimationPlayer")
 vision = NodePath("../../Vision")
-hello_there_sound = NodePath("HelloThereSound")
+demon_close_sound = NodePath("DemonCloseSound")
 
-[node name="HelloThereSound" type="AudioStreamPlayer2D" parent="FiniteStateMachine/ChaseState"]
-stream = ExtResource("5_57cof")
-volume_db = 10.0
-max_distance = 1000.0
+[node name="DemonCloseSound" type="AudioStreamPlayer" parent="FiniteStateMachine/ChaseState"]
+stream = ExtResource("6_w51bl")
 
 [node name="LookAroundState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "vision", "look_around_timer")]
 script = ExtResource("7_f0a6y")
@@ -172,7 +174,16 @@ collision_mask = 2
 [node name="CollisionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
 shape = SubResource("CircleShape2D_xyucv")
 
+[node name="CatchArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape2D" parent="CatchArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rnd2r")
+
 [connection signal="timeout" from="FiniteStateMachine/WanderState/WanderTimer" to="FiniteStateMachine/WanderState" method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="FiniteStateMachine/LookAroundState/LookAroundTimer" to="FiniteStateMachine/LookAroundState" method="_on_look_around_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="area_entered" from="CatchArea" to="." method="_on_catch_area_area_entered"]

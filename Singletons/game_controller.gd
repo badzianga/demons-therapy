@@ -10,6 +10,7 @@ const MUSIC: Dictionary = {
 var level := 0
 var hour := 0
 var minute := 0
+var level_completion_state: String
 
 # set outside this script
 var ambient_light: DirectionalLight2D
@@ -33,8 +34,19 @@ func start_game() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/therapy.tscn")
 
 
+func go_to_caught() -> void:
+	timer.stop()
+	music_player.stop()
+	get_tree().change_scene_to_file("res://Scenes/Levels/black_screen.tscn")
+
+
 func go_to_world() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/world.tscn")
+
+
+func go_to_therapy(state_name: String) -> void:
+	level_completion_state = state_name
+	get_tree().change_scene_to_file("res://Scenes/UI/therapy.tscn")
 
 
 func start_level() -> void:

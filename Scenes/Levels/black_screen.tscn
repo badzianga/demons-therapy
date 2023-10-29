@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwi7oifeyha80"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/black_screen.gd" id="1_ueoxc"]
+[ext_resource type="AudioStream" uid="uid://c7v0hqyagvq44" path="res://Assets/Sounds/Demon/caught.mp3" id="2_imn2x"]
+
+[node name="BlackScreen" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_ueoxc")
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_imn2x")
+autoplay = true
+
+[connection signal="finished" from="Scream" to="." method="_on_scream_finished"]

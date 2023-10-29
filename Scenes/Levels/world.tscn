@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt42bketsexyd"]
+[gd_scene load_steps=11 format=3 uid="uid://bt42bketsexyd"]
 
 [ext_resource type="PackedScene" uid="uid://b0exx5ftanscx" path="res://Scenes/Levels/level_1.tscn" id="1_gv0fi"]
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_k464s"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://vq0i68658o1u" path="res://Scenes/Entities/demon.tscn" id="6_rsrkk"]
 [ext_resource type="PackedScene" uid="uid://dc1cgl6uyeust" path="res://Scenes/Entities/firefly.tscn" id="8_ke2a0"]
 [ext_resource type="PackedScene" uid="uid://0luf8s1i3aey" path="res://Scenes/UI/pause.tscn" id="9_4k4nh"]
+[ext_resource type="AudioStream" uid="uid://msr00u2b7jg0" path="res://Assets/Sounds/Background/wind.mp3" id="9_xam88"]
+[ext_resource type="Script" path="res://Scenes/Sounds/wind_sound.gd" id="10_kab1e"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -35,8 +37,6 @@ position = Vector2(940, 554)
 
 [node name="Player" parent="." instance=ExtResource("2_frd0a")]
 position = Vector2(508, 332)
-speed = 175.0
-sprint_factor = 1.75
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("3_55krn")]
 zoom = Vector2(1.2, 1.2)
@@ -53,5 +53,12 @@ position = Vector2(662, 967)
 
 [node name="Pause" parent="." instance=ExtResource("9_4k4nh")]
 visible = false
+
+[node name="WindSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xam88")
+bus = &"Sounds"
+script = ExtResource("10_kab1e")
+
+[connection signal="finished" from="WindSound" to="WindSound" method="_on_finished"]
 
 [editable path="Player/PlayerCamera"]

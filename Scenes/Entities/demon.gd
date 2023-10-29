@@ -30,3 +30,7 @@ func _on_player_detection_area_body_entered(_body: Player) -> void:
 
 func _on_player_detection_area_body_exited(_body: Player) -> void:
 	player_in_detection_area = false
+
+
+func _on_catch_area_area_entered(_area: Area2D) -> void:
+	GameController.go_to_caught()
