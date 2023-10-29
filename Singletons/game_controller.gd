@@ -1,9 +1,10 @@
 extends Node
 
-const LEVEL_HOURS: Array[int] =   [0, 1]
+const LEVEL_HOURS: Array[int] =   [0, 4]
 const LEVEL_MINUTES: Array[int] = [0, 0]
 const MUSIC: Dictionary = {
-	"menu": preload("res://Assets/Music/music.mp3"),
+	"menu": preload("res://Assets/Music/menu_background.mp3"),
+	"therapy": preload("res://Assets/Music/elevator.mp3"),
 	"level": preload("res://Assets/Music/background_ambient.mp3"),
 }
 
@@ -25,13 +26,26 @@ func _ready() -> void:
 	randomize()
 
 
+func reset_game() -> void:
+	level = 0
+	hour = 0
+	minute = 0
+	timer.stop()
+
+
 func play_music(type: String) -> void:
 	music_player.stream = MUSIC[type]
 	music_player.play()
 
 
 func start_game() -> void:
+	print("I GO TO THERAPYYYYY")
 	get_tree().change_scene_to_file("res://Scenes/UI/therapy.tscn")
+
+
+func go_to_menu() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/menu.tscn")
+	reset_game()
 
 
 func go_to_caught() -> void:
