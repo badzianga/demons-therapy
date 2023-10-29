@@ -9,6 +9,8 @@ var min_angle: int
 var max_angle: int
 
 @onready var center := $Center
+@onready var success_sound: AudioStreamPlayer = $SuccessSound
+@onready var fail_sound: AudioStreamPlayer = $FailSound
 
 
 func _ready() -> void:
@@ -45,11 +47,13 @@ func check_skill(pile: Pile) -> void:
 			set_physics_process(false)
 			visible = false
 		print("skill checked!")
+		success_sound.play()
 	else:
 		set_physics_process(false)
 		visible = false
 		skill_failed.emit()
 		print("failed you imbecile!")
+		fail_sound.play()
 	
 	print(min_angle, "<", pointer, "<", max_angle)
 	

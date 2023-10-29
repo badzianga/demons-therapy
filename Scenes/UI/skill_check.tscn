@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://co6fboesikcmy"]
+[gd_scene load_steps=8 format=3 uid="uid://co6fboesikcmy"]
 
 [ext_resource type="Texture2D" uid="uid://bggxttq1u4q45" path="res://Assets/UI/skill_check.png" id="1_7wi62"]
 [ext_resource type="Script" path="res://Scenes/UI/skill_check.gd" id="2_qrfii"]
 [ext_resource type="Texture2D" uid="uid://c34ou3q6f73q5" path="res://Assets/UI/skill_arrow.png" id="3_tn0tx"]
+[ext_resource type="AudioStream" uid="uid://d213gq50owlvu" path="res://Assets/Sounds/Player/success.mp3" id="4_jawkg"]
+[ext_resource type="AudioStream" uid="uid://dmsc84cdbgr7i" path="res://Assets/Sounds/Player/fail.mp3" id="5_ormew"]
 
 [sub_resource type="Gradient" id="Gradient_bxflg"]
 offsets = PackedFloat32Array(0, 0.8)
@@ -30,3 +32,9 @@ texture = ExtResource("3_tn0tx")
 [node name="Light" type="PointLight2D" parent="Center/Indicator"]
 color = Color(1, 0, 0, 1)
 texture = SubResource("GradientTexture2D_nbbp3")
+
+[node name="SuccessSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jawkg")
+
+[node name="FailSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ormew")
