@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://diinwms7jl23g"]
+
+[ext_resource type="Texture2D" uid="uid://bph33h7ydnp1w" path="res://Assets/UI/blank_sheet.png" id="1_5f6y2"]
+[ext_resource type="Script" path="res://Scenes/UI/message_box.gd" id="2_ukqbh"]
+
+[sub_resource type="Animation" id="Animation_5dcle"]
+resource_name = "move"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(390, -120), Vector2(390, 40), Vector2(390, 40), Vector2(390, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_jrcym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(390, -120)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxci3"]
+_data = {
+"RESET": SubResource("Animation_jrcym"),
+"move": SubResource("Animation_5dcle")
+}
+
+[node name="MessageBox" type="TextureRect"]
+custom_minimum_size = Vector2(500, 120)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 390.0
+offset_top = -120.0
+offset_right = 1018.0
+grow_horizontal = 2
+texture = ExtResource("1_5f6y2")
+expand_mode = 1
+script = ExtResource("2_ukqbh")
+
+[node name="LabelBigger" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 17.0
+offset_right = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "You found your gold!"
+horizontal_alignment = 1
+
+[node name="LabelSmaller" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = 69.0
+offset_right = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Now survive until 6 AM..."
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lxci3")
+}

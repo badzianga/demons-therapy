@@ -138,6 +138,7 @@ func _on_skill_checked() -> void:
 		GameController.hud.set_icon("treasure")
 		has_shovel = false
 		pick_sound.play()
+		GameController.hud.message_box.display()
 	skill_checking = false
 	e_key.visible = false
 

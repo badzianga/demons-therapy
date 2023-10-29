@@ -10,6 +10,7 @@ const ICONS := {
 @onready var time_label := $TimeLabel
 @onready var stamina_bar := $StaminaBar
 @onready var icon_sprite := $IconBorder/IconSprite
+@onready var message_box := $MessageBox
 
 
 # called in game controller
