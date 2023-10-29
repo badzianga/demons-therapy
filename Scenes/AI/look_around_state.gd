@@ -30,7 +30,6 @@ func _physics_process(_delta: float) -> void:
 	if not vision.is_colliding() and actor.player_in_detection_area:
 		look_around_timer.stop()
 		player_seen.emit()
-	print("Global position: ", actor.global_position)
 
 
 func _on_look_around_timer_timeout() -> void:

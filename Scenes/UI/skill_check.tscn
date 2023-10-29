@@ -41,3 +41,6 @@ bus = &"Sounds"
 stream = ExtResource("5_ormew")
 volume_db = 24.0
 bus = &"Sounds"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("1_7wi62")
