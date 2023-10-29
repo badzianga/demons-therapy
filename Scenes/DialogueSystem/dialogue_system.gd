@@ -1,7 +1,7 @@
 class_name DialogueSystem
 extends TextureRect
 
-#signal actor_changed(actor_name: String)
+signal actor_changed(actor_name: String)
 signal image_changed(image_path: String)
 signal dialog_finished
  
@@ -56,7 +56,7 @@ func _next_phrase() -> void:
 	_text_label.bbcode_text = _dialog[_phrase_number]["Text"]
 	if _dialog[_phrase_number].has("Image"):
 		image_changed.emit(_dialog[_phrase_number]["Image"])
-	#actor_changed.emit(_dialog[_phrase_number]["Name"])
+	actor_changed.emit(_dialog[_phrase_number]["Name"])
 
 	_text_label.visible_characters = 0
 	while _text_label.visible_characters < len(_text_label.text):
