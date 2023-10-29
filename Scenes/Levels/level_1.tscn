@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0exx5ftanscx"]
+[gd_scene load_steps=18 format=3 uid="uid://b0exx5ftanscx"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="1_17c3d"]
 [ext_resource type="Texture2D" uid="uid://cbkia1ok3hpvp" path="res://Assets/Environment/bg_grass.png" id="1_ig5y3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://n32lrg0otnyx" path="res://Scenes/Environment/small_grass.tscn" id="7_wf07q"]
 [ext_resource type="PackedScene" uid="uid://bvds4lp08mkv0" path="res://Scenes/Environment/sign.tscn" id="8_6nxpp"]
 [ext_resource type="PackedScene" uid="uid://j52e24vem5ct" path="res://Scenes/Environment/pile.tscn" id="10_pux81"]
+[ext_resource type="PackedScene" uid="uid://bh1j4dv245jqk" path="res://Scenes/Environment/shovel_box.tscn" id="11_7ykp2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63664"]
 texture = ExtResource("1_ig5y3")
@@ -224,3 +225,6 @@ position = Vector2(475, 164)
 
 [node name="PileLocation7" type="Marker2D" parent="PileLocations"]
 position = Vector2(1822, 214)
+
+[node name="ShovelBox" parent="." instance=ExtResource("11_7ykp2")]
+position = Vector2(444, 833)

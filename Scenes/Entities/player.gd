@@ -11,6 +11,8 @@ var stamina := 100
 var stamina_depleted := false
 var sprinting := false
 var skill_checking := false
+var has_shovel := false
+var collides_with_box := false
 
 var pile: Pile = null
 
@@ -76,7 +78,10 @@ func handle_animations() -> void:
 
 
 func check_digging() -> void:
-	if Input.is_action_just_pressed("dig") and pile != null:
+	if Input.is_action_just_pressed("dig") and collides_with_box:
+		has_shovel = true
+		GameController.hud.set_icon("shovel")
+	if Input.is_action_just_pressed("dig") and pile != null and has_shovel:
 		direction = Vector2.ZERO
 		if not skill_checking:
 			skill_check.start()
@@ -85,11 +90,17 @@ func check_digging() -> void:
 			skill_check.check_skill(pile)
 
 
-func _on_dig_area_area_entered(area: Pile) -> void:
+func _on_dig_area_area_entered(area: Area2D) -> void:
+	if area.name == "ShovelBoxArea":
+		collides_with_box = true
+		return
 	pile = area
 
 
-func _on_dig_area_area_exited(_area: Pile) -> void:
+func _on_dig_area_area_exited(area: Area2D) -> void:
+	if area.name == "ShovelBoxArea":
+		collides_with_box = false
+		return
 	pile = null
 
 
@@ -98,4 +109,6 @@ func _on_skill_checked() -> void:
 
 
 func _on_skill_failed() -> void:
+	has_shovel = false
+	GameController.hud.set_icon("broken")
 	skill_checking = false

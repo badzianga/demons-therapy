@@ -35,6 +35,8 @@ position = Vector2(940, 554)
 
 [node name="Player" parent="." instance=ExtResource("2_frd0a")]
 position = Vector2(508, 332)
+speed = 175.0
+sprint_factor = 1.75
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("3_55krn")]
 zoom = Vector2(1.2, 1.2)
