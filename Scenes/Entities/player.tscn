@@ -194,9 +194,12 @@ top_level = false
 
 [node name="PickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_naega")
+bus = &"Sounds"
 
 [node name="BreathingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_3813x")
+volume_db = 5.0
+bus = &"Sounds"
 
 [connection signal="area_entered" from="DigArea" to="." method="_on_dig_area_area_entered"]
 [connection signal="area_exited" from="DigArea" to="." method="_on_dig_area_area_exited"]

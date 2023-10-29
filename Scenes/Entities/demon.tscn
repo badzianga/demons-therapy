@@ -153,6 +153,7 @@ demon_close_sound = NodePath("DemonCloseSound")
 
 [node name="DemonCloseSound" type="AudioStreamPlayer" parent="FiniteStateMachine/ChaseState"]
 stream = ExtResource("6_w51bl")
+bus = &"Sounds"
 
 [node name="LookAroundState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "sprite", "animator", "vision", "look_around_timer", "player_detection_area")]
 script = ExtResource("7_f0a6y")
@@ -197,6 +198,7 @@ shape = SubResource("CapsuleShape2D_rnd2r")
 [node name="ScarySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_57cof")
 max_distance = 1000.0
+bus = &"Sounds"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 200.0

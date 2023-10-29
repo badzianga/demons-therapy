@@ -33,15 +33,18 @@ script = ExtResource("10_kab1e")
 
 [node name="OwlSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_pptxq")
+bus = &"Sounds"
 script = ExtResource("12_5dws7")
 
 [node name="CricketSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ndxmd")
 volume_db = -3.0
+bus = &"Sounds"
 script = ExtResource("14_vrw3u")
 
 [node name="RavenSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_cwah7")
+bus = &"Sounds"
 script = ExtResource("16_anw3r")
 
 [connection signal="finished" from="WindSound" to="WindSound" method="_on_finished"]
