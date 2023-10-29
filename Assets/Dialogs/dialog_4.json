@@ -2,7 +2,9 @@
     {"Name": "Therapist", "Text": "We all make mistakes. I think you should start appreciating yourself, for who you really are.", "Image": "bieda_ui_3.png"},
     {"Name": "Therapist", "Text": "Also, remember to acknowledge that we all are imprefect!", "Image": "bieda_ui_3.png"},
     {"Name": "Bieda", "Text": "Doc, give me some real tips.", "Image": "bieda_ui_2.png"},
-    {"Name": "Therapist", "Text": "You can try changing into objects or maybe teleporting?", "Image": "bieda_ui_3.png"},
+    {"Name": "Therapist", "Text": "Have you ever tried changing into objects or maybe teleporting?", "Image": "bieda_ui_3.png"},
     {"Name": "Bieda", "Text": "I can't do that! My Creators devoted little time to my development.", "Image": "bieda_ui_4.png"},
-    {"Name": "Therapist", "Text": "Speaking about little time. Looks like we are out of time. We will see each other next week!", "Image": "bieda_ui_3.png"}
+    {"Name": "Therapist", "Text": "Speaking about little time. Looks like we are out of time.", "Image": "bieda_ui_3.png"},
+    {"Name": "Bieda", "Text": "I haven't finished talking! Imagine, I can't even go around obstacles! That's crazy!!!", "Image": "bieda_ui_4.png"},
+    {"Name": "Therapist", "Text": "Now now, we will see each other next week!", "Image": "bieda_ui_4.png"}
 ]

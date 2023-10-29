@@ -1,7 +1,7 @@
 [
-    {"Name": "Therapist", "Text": "So, in conclusion, he just run away from you in a circles and hid in bushes?", "Image": "bieda_ui_3.png"},
+    {"Name": "Therapist", "Text": "So, in conclusion, he just run away from you in a circles and hid behind bushes again?", "Image": "bieda_ui_3.png"},
     {"Name": "Therapist", "Text": "That's a bit lame tactic, if you'd ask me.", "Image": "bieda_ui_3.png"},
     {"Name": "Bieda", "Text": "Okey, okey, you're my therapist. Stop dissing me.", "Image": "bieda_ui_2.png"},
-    {"Name": "Bieda", "Text": "After all of that, I started misleading him, coming from behind and running after him.", "Image": "bieda_ui_1.png"},
-    {"Name": "Therapist", "Text": "Let's continue, and remember to talk about your feelings.", "Image": "bieda_ui_3.png"}
+    {"Name": "Bieda", "Text": "The next night, I prepared lots of dummy dirt piles to mislead him.", "Image": "bieda_ui_1.png"},
+    {"Name": "Therapist", "Text": "Tell me more, and remember to talk about your feelings.", "Image": "bieda_ui_3.png"}
 ]
